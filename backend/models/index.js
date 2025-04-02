@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
-import User from './user.js';  // Correcto, la importación del modelo
+import User from './user.js';
 
 dotenv.config();
 
@@ -15,7 +15,7 @@ const sequelize = new Sequelize({
 });
 
 const models = {
-  User, 
+  User,
 };
 
 sequelize.sync()
