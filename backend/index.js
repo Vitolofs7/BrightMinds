@@ -1,44 +1,43 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const http = require("http");
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+// import usersRoutes from './routes/userRoutes.js';
+import commentRoutes from './routes/comment.routes.js';
+import { sequelize } from './models/index.js';
 
-const db = require("./models/index.js");
+dotenv.config();
 
 const app = express();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const corsOptions = {
-    origin: 'http://localhost:5173',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
 app.use(cors(corsOptions));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-    res.json({ message: "Hi" });
+  res.json({ message: "Hi" });
 });
 
-const routes = [
-    "comment"
-];
-
-routes.forEach((route) => require(`./routes/${route}.routes.js`)(app));
+// app.use('/api/users', usersRoutes);
+app.use('/api/comments', commentRoutes);
 
 const PORT = process.env.PORT || 8080;
 
-const server = http.createServer(app);
-
-db.sequelize
-  .sync({ force: true })
-  .then(async () => {
-    console.log("Database synced: tables dropped and recreated.");
-
-    const PORT = process.env.HOST_PORT || 8080;
-    server.listen(PORT, () => {
-      console.log(`Servidor ejecutándose en el puerto ${PORT}.`);
+sequelize.sync({ force: true })
+  .then(() => {
+    console.log("Base de datos sincronizada correctamente");
+    app.listen(PORT, () => {
+      console.log(`Servidor corriendo en http://localhost:${PORT}`);
     });
   })
   .catch((error) => {

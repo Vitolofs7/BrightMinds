@@ -1,12 +1,11 @@
-module.exports = (app) => {
-    const comment = require("../controllers/comment.controller.js");
-    const router = require("express").Router();
+import express from 'express';
+import * as commentController from '../controllers/comment.controller.js';
 
-    // Add a new comment
-    router.post("/", comment.addComment);
+const router = express.Router();
 
-    // Get all comments
-    router.get("/", comment.getAllComments);
+router.get('/', commentController.getAllComments);
+router.post('/', commentController.addComment);
+router.put('/:id', commentController.updateComment);
+router.delete('/:id', commentController.deleteComment);
 
-    app.use("/api/comments", router);
-};
+export default router;
