@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
-// import usersRoutes from './routes/userRoutes.js';
+import usersRoutes from './routes/userRoutes.js';
 import commentRoutes from './routes/comment.routes.js';
 import authRoutes from './routes/authRoutes.js';
 import { sequelize } from './models/index.js';

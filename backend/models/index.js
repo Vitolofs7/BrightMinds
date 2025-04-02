@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
-// import User from './user.js';
+import User from './user.js';
 import Comment from './comment.model.js';
 
 dotenv.config();
@@ -16,7 +16,7 @@ const sequelize = new Sequelize({
 });
 
 const models = {
-  // User, 
+  User, 
   Comment,
 };
 
