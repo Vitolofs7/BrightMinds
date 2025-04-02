@@ -5,6 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 // import usersRoutes from './routes/userRoutes.js';
 import commentRoutes from './routes/comment.routes.js';
+import authRoutes from './routes/authRoutes.js';
 import { sequelize } from './models/index.js';
 
 dotenv.config();
@@ -28,7 +29,8 @@ app.get("/", (req, res) => {
   res.json({ message: "Hi" });
 });
 
-// app.use('/api/users', usersRoutes);
+app.use('/api/users', usersRoutes);
+app.use('/api/auth', authRoutes);
 app.use('/api/comments', commentRoutes);
 
 const PORT = process.env.PORT || 8080;
