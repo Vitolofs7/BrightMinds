@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
-import User from './user.js';
+import User from './user.model.js';
 import Comment from './comment.model.js';
 
 dotenv.config();
@@ -20,9 +20,9 @@ const models = {
   Comment,
 };
 
-sequelize.sync({force: true})
-  .then(() => console.log('Modelos sincronizados con la base de datos'))
-  .catch((err) => console.error('Error al sincronizar modelos', err));
+sequelize.sync({ force: true })
+  .then(() => console.log('Models synchronized with the database'))
+  .catch((err) => console.error('Error synchronizing models', err));
 
 export { sequelize };
 export default models;

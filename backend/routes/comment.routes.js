@@ -1,11 +1,12 @@
 import express from 'express';
 import * as commentController from '../controllers/comment.controller.js';
+import { authenticateToken } from '../middlewares/authenticateToken.js';
 
 const router = express.Router();
 
-router.get('/', commentController.getAllComments);
-router.post('/', commentController.addComment);
-router.put('/:id', commentController.updateComment);
-router.delete('/:id', commentController.deleteComment);
+router.get('/', authenticateToken, commentController.getAllComments);
+router.post('/', authenticateToken, commentController.addComment);
+router.put('/:id', authenticateToken, commentController.updateComment);
+router.delete('/:id', authenticateToken, commentController.deleteComment);
 
 export default router;

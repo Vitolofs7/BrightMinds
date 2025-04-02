@@ -3,9 +3,9 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import usersRoutes from './routes/userRoutes.js';
+import usersRoutes from './routes/user.routes.js';
 import commentRoutes from './routes/comment.routes.js';
-import authRoutes from './routes/authRoutes.js';
+import authRoutes from './routes/auth.routes.js';
 import { sequelize } from './models/index.js';
 
 dotenv.config();
@@ -37,11 +37,11 @@ const PORT = process.env.PORT || 8080;
 
 sequelize.sync({ force: true })
   .then(() => {
-    console.log("Base de datos sincronizada correctamente");
+    console.log("Database successfully synchronized");
     app.listen(PORT, () => {
-      console.log(`Servidor corriendo en http://localhost:${PORT}`);
+      console.log(`Server running at http://localhost:${PORT}`);
     });
   })
   .catch((error) => {
-    console.error("Error al sincronizar la base de datos:", error);
+    console.error("Error synchronizing the database:", error);
   });

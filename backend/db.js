@@ -11,7 +11,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 });
 
 sequelize.authenticate()
-    .then(() => console.log('✅ Conexión exitosa a PostgreSQL'))
-    .catch(error => console.error('❌ Error de conexión a PostgreSQL:', error));
+    .then(() => console.log('✅ Successful connection to PostgreSQL'))
+    .catch(error => console.error('❌ Connection error to PostgreSQL:', error));
 
 export default sequelize;

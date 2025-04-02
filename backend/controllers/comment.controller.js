@@ -52,7 +52,6 @@ export const updateComment = async (req, res) => {
 
         let updatedFields = { userId, videoId, content };
 
-        // Solo actualizamos 'like' y 'dislike' si se proporcionan, si no se mantienen los valores actuales.
         if (like !== undefined) updatedFields.like = like;
         if (dislike !== undefined) updatedFields.dislike = dislike;
 
