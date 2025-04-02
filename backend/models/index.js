@@ -1,6 +1,7 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
 import User from './user.js';
+import Comment from './comment.model.js';
 
 dotenv.config();
 
@@ -15,10 +16,11 @@ const sequelize = new Sequelize({
 });
 
 const models = {
-  User,
+  User, 
+  Comment,
 };
 
-sequelize.sync()
+sequelize.sync({force: true})
   .then(() => console.log('Modelos sincronizados con la base de datos'))
   .catch((err) => console.error('Error al sincronizar modelos', err));
 
