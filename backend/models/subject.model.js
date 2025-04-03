@@ -11,8 +11,8 @@ const Subject = sequelize.define('Subject', {
     type: DataTypes.TEXT,
   },
 }, {
-  tableName: 'subjects',
-  timestamps: false,
+  tableName: 'Subject',
+  timestamps: true,
 });
 
 export default Subject;

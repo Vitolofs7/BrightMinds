@@ -28,7 +28,7 @@ export const addReply = async (req, res) => {
 export const getAllReplies = async (req, res) => {
     try {
 
-        const reply = await Reply.findAll({
+        const replies = await Reply.findAll({
             order: [["createdAt", "DESC"]],
         });
 

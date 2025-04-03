@@ -4,7 +4,7 @@ import { authenticateBasic } from '../middlewares/authenticateBasic.js';
 
 const router = express.Router();
 
-router.post('/register', authenticateBasic, register);
+router.post('/register', register);
 router.post('/login', authenticateBasic, login);
 
 export default router;
