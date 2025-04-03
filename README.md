@@ -2,4 +2,4 @@ hello
 
 from develop
 
-migrations: npx sequelize-cli db:migrate --config config.mjs
+migrations: npx sequelize-cli db:migrate --config config.cjs
