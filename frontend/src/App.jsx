@@ -8,13 +8,14 @@ import { ExplorePage } from './pages/explore/explore.page';
 import { SettingsPage } from './pages/settings/settings.page';
 import { ErrorPage } from './pages/error/error.page';
 import { SignUpPage } from './pages/signUp/signUp.page';
+import { LoginPage } from './pages/login/login.page';
 import './App.scss';
 
 function App() {
   const location = useLocation();
 
   // Define the routes where the navigation bar should be displayed
-  const hideNavigationRoutes = ['/', '/signup'];
+  const hideNavigationRoutes = ['/', '/signup', '/login'];
   const showNavigation = !hideNavigationRoutes.includes(location.pathname);
 
 
@@ -27,6 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/signUp" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/homepage" element={<HomePage />} />
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="/badges" element={<BadgesPage />} />
