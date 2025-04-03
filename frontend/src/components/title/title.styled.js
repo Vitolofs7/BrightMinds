@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const TitleStyled = styled.div`
-    /* margin-left: 5vw; */
     padding-left: 5vw;
     border-left: 5px solid var(--color-purple-dark); 
+    white-space: pre;
+
+
 
 
     h1 {
@@ -21,6 +23,22 @@ export const TitleStyled = styled.div`
 
         p {
             font-size: 3rem;
+        }
+    }
+
+    .small {
+        display: flex;
+        width: 100%;
+        >div {
+            display: flex;
+            align-items: center;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 2rem;
         }
     }
 
