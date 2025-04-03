@@ -1,47 +1,48 @@
 'use strict';
 
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    // Creación de la tabla User
+  up: async (queryInterface, Sequelize) => {
+    console.log("Running migration: Creating 'User' table");
     await queryInterface.createTable('User', {
       id: {
-        type: Sequelize.INTEGER,
+        allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        allowNull: false,
+        type: Sequelize.INTEGER
       },
       name: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
       },
       surname1: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
       },
       surname2: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
       },
       role: {
         type: Sequelize.STRING,
         allowNull: false,
-        defaultValue: 'user',
+        defaultValue: 'user'
       },
       email: {
         type: Sequelize.STRING,
-        allowNull: false,
         unique: true,
+        allowNull: false
       },
       password: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
       }
-    }, {
-      timestamps: false
     });
+    console.log("'User' table created successfully");
   },
 
-  async down(queryInterface, Sequelize) {
+  down: async (queryInterface, Sequelize) => {
+    console.log("Running migration: Dropping 'User' table");
     await queryInterface.dropTable('User');
+    console.log("'User' table dropped successfully");
   }
 };
