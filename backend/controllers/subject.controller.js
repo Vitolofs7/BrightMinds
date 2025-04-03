@@ -26,7 +26,7 @@ export const addSubject = async (req, res) => {
 export const getAllSubjects = async (req, res) => {
     try {
 
-        const subject = await Subject.findAll({
+        const subjects = await Subject.findAll({
             order: [["createdAt", "DESC"]],
         });
 

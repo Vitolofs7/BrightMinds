@@ -12,7 +12,7 @@ const Subject = sequelize.define('Subject', {
   },
 }, {
   tableName: 'Subject',
-  timestamps: false,
+  timestamps: true,
 });
 
 export default Subject;
