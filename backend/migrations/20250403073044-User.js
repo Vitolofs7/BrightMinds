@@ -2,7 +2,6 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    console.log("Running migration: Creating 'User' table");
     await queryInterface.createTable('User', {
       id: {
         allowNull: false,
@@ -37,7 +36,6 @@ module.exports = {
         allowNull: false
       }
     });
-    console.log("'User' table created successfully");
   },
 
   down: async (queryInterface, Sequelize) => {

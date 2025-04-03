@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "basic-auth": "^2.0.1",
-    "dotenv": "^16.4.7",
-    "pg": "^8.14.1"
-  }
-}
