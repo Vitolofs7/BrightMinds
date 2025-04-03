@@ -1,6 +1,6 @@
 import models from '../models/index.js';
 
-const { Video } = models;
+const { Video, Comment } = models;
 
 export const getVideo = async (req, res) => {
     try {
@@ -91,5 +91,38 @@ export const deleteVideo = async (req, res) => {
     } catch (error) {
         console.error("❌ Error deleting video:", error.message);
         res.status(500).json({ error: "Error deleting video" });
+    }
+};
+export const getVideoComments = async (req, res) => {
+    try {
+        // Obtener el videoId de los parámetros de la ruta
+        const { videoId } = req.params;
+        console.log(`Received request to get comments for videoId: ${videoId}`);
+
+        // Buscar el video en la base de datos e incluir los comentarios relacionados
+        const video = await Video.findByPk(videoId, {
+            include: [
+                {
+                    model: Comment,
+                    attributes: ['id', 'content', 'like', 'dislike', 'createdAt', 'updatedAt'],
+                },
+            ],
+        });
+
+        // Si el video no existe, devolver un error
+        if (!video) {
+            console.log(`Video with ID ${videoId} not found.`);
+            return res.status(404).json({ error: "Video not found" });
+        }
+
+        // Log para ver los comentarios encontrados
+        console.log(`Video found: ${videoId}. Number of comments: ${video.Comments.length}`);
+
+        // Devolver los comentarios
+        res.json({ comments: video.Comments });
+    } catch (error) {
+        // Si ocurre un error, loguearlo y enviar un error al cliente
+        console.error("Error fetching video comments:", error);
+        res.status(500).json({ error: "Error fetching video comments" });
     }
 };

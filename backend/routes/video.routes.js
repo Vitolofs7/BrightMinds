@@ -9,4 +9,7 @@ router.post('/', authenticateToken, videoController.createVideo);
 router.put('/:id', authenticateToken, videoController.updateVideo);
 router.delete('/:id', authenticateToken, videoController.deleteVideo);
 
+router.get('/video-comments/:videoId', authenticateToken, videoController.getVideoComments);
+
+
 export default router;

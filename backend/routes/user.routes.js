@@ -9,4 +9,6 @@ router.post('/', authenticateToken, userController.createUser);
 router.put('/:id', authenticateToken, userController.updateUser);
 router.delete('/:id', authenticateToken, userController.deleteUser);
 
+router.get('/user-comments/:userId', authenticateToken, userController.getUserComments);
+
 export default router;

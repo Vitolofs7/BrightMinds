@@ -1,7 +1,7 @@
 import models from '../models/index.js';
 import bcrypt from 'bcrypt';
 
-const { User } = models;
+const { User, Comment } = models;
 const SALT_ROUNDS = 10;
 
 export const getUsers = async (req, res) => {
@@ -32,13 +32,13 @@ export const createUser = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
 
-        const newUser = await User.create({ 
-            name, 
-            surname1, 
-            surname2, 
-            role, 
-            email, 
-            password: hashedPassword 
+        const newUser = await User.create({
+            name,
+            surname1,
+            surname2,
+            role,
+            email,
+            password: hashedPassword
         });
 
         console.log(`User created: ${newUser.id}`);
@@ -95,5 +95,31 @@ export const deleteUser = async (req, res) => {
     } catch (error) {
         console.error("Error deleting user:", error.message);
         res.status(500).json({ error: error.message });
+    }
+};
+
+export const getUserComments = async (req, res) => {
+    try {
+        const { userId } = req.params;
+
+        // Buscamos el usuario junto con sus comentarios asociados
+        const user = await User.findByPk(userId, {
+            include: [
+                {
+                    model: Comment,  // Relación entre User y Comment
+                    attributes: ['id', 'videoId', 'content', 'like', 'dislike', 'createdAt', 'updatedAt'],
+                },
+            ],
+        });
+
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        // Devolvemos los comentarios asociados al usuario
+        res.json({ comments: user.Comments });
+    } catch (error) {
+        console.error("Error fetching user comments:", error);
+        res.status(500).json({ error: "Error fetching user comments" });
     }
 };
