@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+    * {
+        font-family: 'Urbanist', sans-serif;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        list-style: none;
+        color: var(--color-purple-dark);
+    }   
+
+    :root {
+        --color-yellow: #ffb167;
+        --color-purple-dark: #130e2d;
+        --color-purple-dark-medium: #7D58C2;
+        --color-purple-medium: #ccc1e4;
+        --color-purple-light: #ebeaf6;
+        --color-yellow-saturated: #ffb06666;
+      }
+
+      body {
+        background-color: var(--color-purple-light);
+        background-image: url(./assets/backgroundThingy.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center -30px;
+        margin-top: 1rem;
+      }
