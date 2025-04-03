@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("video", {
+    await queryInterface.createTable("Video", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -48,7 +48,7 @@ module.exports = {
   },
 
   async down(queryInterface) {
-    await queryInterface.dropTable("video");
+    await queryInterface.dropTable("Video");
   },
 };
 
