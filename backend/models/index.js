@@ -2,9 +2,6 @@ import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
 import User from './user.model.js';
 import Comment from './comment.model.js';
-import Reply from './reply.model.js';
-import Video from './video.model.js';
-import Subject from './subject.model.js';
 
 dotenv.config();
 
@@ -21,9 +18,6 @@ const sequelize = new Sequelize({
 const models = {
   User, 
   Comment,
-  Reply,
-  Video,
-  Subject,
 };
 
 sequelize.sync({ force: true })
