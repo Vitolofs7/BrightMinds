@@ -9,4 +9,7 @@ router.post('/', authenticateToken, commentController.addComment);
 router.put('/:id', authenticateToken, commentController.updateComment);
 router.delete('/:id', authenticateToken, commentController.deleteComment);
 
+router.get('/comment-replies/:commentId', commentController.getCommentReplies);
+
+
 export default router;

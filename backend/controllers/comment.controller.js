@@ -1,6 +1,6 @@
 import models from '../models/index.js';
 
-const { Comment } = models;
+const { Comment, Reply } = models;
 
 export const addComment = async (req, res) => {
     try {
@@ -80,5 +80,32 @@ export const deleteComment = async (req, res) => {
     } catch (error) {
         console.error("Error deleting comment:", error.message);
         return res.status(500).json({ error: error.message });
+    }
+};
+
+export const getCommentReplies = async (req, res) => {
+    try {
+        const { commentId } = req.params;
+        console.log(`Received request to get replies for commentId: ${commentId}`);
+
+        const comment = await Comment.findByPk(commentId, {
+            include: [
+                {
+                    model: Reply,
+                    attributes: ['id', 'content', 'like', 'dislike', 'createdAt', 'updatedAt'],
+                }
+            ],
+        });
+
+        if (!comment) {
+            console.log(`Comment with id ${commentId} not found`);
+            return res.status(404).json({ error: 'Comment not found' });
+        }
+
+        console.log(`Found comment with id ${commentId}. Number of replies: ${comment.Replies.length}`);
+        res.json({ replies: comment.Replies });
+    } catch (error) {
+        console.error("Error fetching comment replies:", error.message);
+        res.status(500).json({ error: error.message });
     }
 };

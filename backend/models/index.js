@@ -2,9 +2,8 @@ import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
 import User from './user.model.js';
 import Comment from './comment.model.js';
-import Reply from './reply.model.js';
 import Video from './video.model.js';
-import Subject from './subject.model.js';
+import Reply from './reply.model.js';
 
 dotenv.config();
 
@@ -18,17 +17,22 @@ const sequelize = new Sequelize({
   logging: false,
 });
 
-const models = {
-  User, 
-  Comment,
-  Reply,
-  Video,
-  Subject,
-};
+// Relaciones entre los modelos
+User.hasMany(Comment, { foreignKey: 'userId' });
+Comment.belongsTo(User, { foreignKey: 'userId' });
 
-sequelize.sync({ force: true })
+Video.hasMany(Comment, { foreignKey: 'videoId' });
+Comment.belongsTo(Video, { foreignKey: 'videoId' });
+
+Comment.hasMany(Reply, { foreignKey: 'commentId' }); // Un comentario tiene muchas respuestas
+Reply.belongsTo(Comment, { foreignKey: 'commentId' }); // Una respuesta pertenece a un comentario
+
+const models = { User, Comment, Video, Reply };
+
+sequelize.sync({ force: true }) 
   .then(() => console.log('Models synchronized with the database'))
   .catch((err) => console.error('Error synchronizing models', err));
 
 export { sequelize };
+export { User, Comment, Video, Reply }; 
 export default models;
