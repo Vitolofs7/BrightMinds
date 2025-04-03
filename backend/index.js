@@ -7,6 +7,7 @@ import usersRoutes from './routes/user.routes.js';
 import commentRoutes from './routes/comment.routes.js';
 import authRoutes from './routes/auth.routes.js';
 import { sequelize } from './models/index.js';
+import videoRoutes from './routes/video.routes.js'
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ app.get("/", (req, res) => {
 app.use('/api/users', usersRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/comments', commentRoutes);
+app.use('/api/videos', videoRoutes);
 
 const PORT = process.env.PORT || 8080;
 
