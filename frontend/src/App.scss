@@ -12,13 +12,14 @@
     :root {
         --color-yellow: #ffb167;
         --color-purple-dark: #130e2d;
+        --color-purple-dark-medium: #7D58C2;
         --color-purple-medium: #ccc1e4;
         --color-purple-light: #ebeaf6;
         --color-yellow-saturated: #ffb06666;
       }
 
       body {
-        // background-color: var(--color-purple-light);
+        background-color: var(--color-purple-light);
         background-image: url(./assets/backgroundThingy.svg);
         background-repeat: no-repeat;
         background-size: contain;
