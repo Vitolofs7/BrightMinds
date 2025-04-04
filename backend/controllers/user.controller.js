@@ -9,7 +9,7 @@ export const getUsers = async (req, res) => {
         console.log("Receiving GET request to fetch all users");
 
         const users = await User.findAll({
-            attributes: ['id', 'name', 'surname1', 'surname2', 'role', 'email'],
+            attributes: ['id', 'name', 'lastName', 'role', 'email'],
         });
 
         console.log(`Users found: ${users.length}`);
@@ -24,9 +24,9 @@ export const createUser = async (req, res) => {
     try {
         console.log("Receiving POST request to create a user");
 
-        const { name, surname1, surname2, role, email, password } = req.body;
+        const { name, lastName, role, email, password } = req.body;
 
-        if (!name || !surname1 || !surname2 || !email || !password) {
+        if (!name || lastName || !email || !password) {
             return res.status(400).json({ error: "All fields are required" });
         }
 
@@ -34,8 +34,7 @@ export const createUser = async (req, res) => {
 
         const newUser = await User.create({
             name,
-            surname1,
-            surname2,
+            lastName,
             role,
             email,
             password: hashedPassword
@@ -54,14 +53,14 @@ export const updateUser = async (req, res) => {
         console.log(`Receiving PUT request to update user with ID: ${req.params.id}`);
 
         const { id } = req.params;
-        const { name, surname1, surname2, role, email, password } = req.body;
+        const { name, lastName, role, email, password } = req.body;
 
         const user = await User.findByPk(id);
         if (!user) {
             return res.status(404).json({ error: "User not found" });
         }
 
-        let updatedFields = { name, surname1, surname2, role, email };
+        let updatedFields = { name, lastName, role, email };
 
         if (password) {
             updatedFields.password = await bcrypt.hash(password, SALT_ROUNDS);

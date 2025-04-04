@@ -9,16 +9,16 @@ export const register = async (req, res) => {
     try {
         console.log("📩 Receiving POST request to register a user");
 
-        const { name, surname1, surname2, role, email, password } = req.body;
+        const { name, lastName, role, email, password } = req.body;
 
-        if (!name || !surname1 || !surname2 || !email || !password) {
+        if (!name || !lastName || !email || !password) {
             return res.status(400).json({ error: "All fields are required" });
         }
 
         const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
 
         const newUser = await User.create({ 
-            name, surname1, surname2, role, email, password: hashedPassword 
+            name, lastName, role, email, password: hashedPassword 
         });
 
         console.log(`✅ User registered: ${newUser.id}`);
