@@ -30,6 +30,7 @@ export const NavigationStyled = styled.div`
         color: var(--color-purple-dark);
         padding: 0.5rem;
         display: flex;
+        transition: 0.3s;
     }
 
     a.active {
@@ -41,7 +42,11 @@ export const NavigationStyled = styled.div`
         
         img {
             filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg);
-            
+            transition: transform 0.3s ease; /* Smooth scaling animation */
+        }
+
+        img:active {
+            transform: scale(1.2); /* Scale the icon when clicked */
         }
 
     }

@@ -23,5 +23,9 @@ export const WelcomeStyled = styled.div`
     
 }
 
+a.login {
+    width: 100%;
+}
+
 
 `
