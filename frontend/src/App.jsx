@@ -30,6 +30,7 @@ function App() {
         <Route path="/" element={<OutletComponent />} >
           <Route path="/" element={<WelcomePage />} />
           <Route path="/signUp" element={<SignUpPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Route>
 
         <Route path="/homepage" element={<HomePage />} />
