@@ -9,6 +9,7 @@ import { SettingsPage } from './pages/settings/settings.page';
 import { ErrorPage } from './pages/error/error.page';
 import { SignUpPage } from './pages/signUp/signUp.page';
 import { LoginPage } from './pages/login/login.page';
+import { CourseHomepagePage } from './pages/courseHomepage/courseHomepage.page';
 import './App.scss';
 
 function App() {
@@ -31,9 +32,11 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/homepage" element={<HomePage />} />
         <Route path="/explore" element={<ExplorePage />} />
+        <Route path="/courseHomepage" element={<CourseHomepagePage />} />
         <Route path="/badges" element={<BadgesPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="*" element={<ErrorPage />} />
+
       </Routes>
     </>
   );
