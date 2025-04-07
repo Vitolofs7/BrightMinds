@@ -16,6 +16,7 @@ export const loginUser = async (email, password) => {
   try {
     const credentials = btoa(`${email}:${password}`);
     console.log("🔐 Sending login request for email:", email);
+    console.log("🔐 Sending login request for password:", password);
 
     const response = await api.post('/auth/login', null, {
       headers: {

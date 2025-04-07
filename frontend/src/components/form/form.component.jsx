@@ -1,51 +1,52 @@
 import { useForm } from "react-hook-form";
 import { FormStyled } from "./form.styled";
-import { registerUser, loginUser } from "../../services/auth.service"; // Asegúrate de importar ambos servicios
-import { useNavigate } from "react-router-dom"; // Importar useNavigate
+import { registerUser, loginUser } from "../../services/auth.service";
+import { useNavigate } from "react-router-dom";
 
-export default function FormComponent({ isSignUp = true }) {
+export default function FormComponent({ isSignUp = true, onLoginSuccess }) {
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
     const password = watch("password");
-    const navigate = useNavigate(); // Inicializar el hook navigate
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         try {
             if (isSignUp) {
-                // Crear el objeto con los datos del usuario para enviar al backend al registrarse
+                // Lógica de registro
                 const userPayload = {
                     name: data.firstName,
                     lastName: data.lastName,
-                    role: "user", // Asignando un rol predeterminado
+                    role: "user",
                     email: data.email,
                     password: data.password,
                 };
 
-                console.log("📨 Form submitted with the following data:", userPayload);
-
-                // Enviar los datos al backend utilizando el servicio de registro
-                const response = await registerUser(userPayload);
-
-                console.log("✅ Registration response from backend:", response);
-
-                // Mostrar un mensaje de éxito
-                alert("User successfully registered!");
-                reset(); // Limpiar el formulario después del registro
-
-                // Redirigir al usuario a la página de login
-                navigate("/login"); // Redirigir al login
+                await registerUser(userPayload);
+                reset();
+                navigate("/login"); // Redirige al login después del registro exitoso
             } else {
-                // Si es un formulario de login
+                // Lógica de login
                 const response = await loginUser(data.email, data.password);
 
-                console.log("✅ Login response from backend:", response);
-
-                // Almacenar el token o realizar cualquier otra acción necesaria (como redirigir)
-                alert("Login successful!");
-                navigate("/dashboard"); // O cualquier página a la que quieras redirigir al usuario después de loguearse
+                // Verificar que la respuesta contiene un token
+                if (response.token) {
+                    localStorage.setItem("token", response.token); // Guarda el token en el localStorage
+                    
+                    // Actualizar el estado de autenticación en el componente superior
+                    if (onLoginSuccess) {
+                        onLoginSuccess(); // Llama al callback para actualizar el estado en el componente superior
+                    }
+                    
+                    // Redirige a la página principal después de un login exitoso
+                    navigate("/homepage");
+                } else {
+                    throw new Error("No token received");
+                }
             }
         } catch (error) {
-            console.error("❌ Error during operation:", error);
-            alert(isSignUp ? "Registration failed. Please try again." : "Login failed. Please check your credentials.");
+            const message = error.response?.data?.message || (isSignUp
+                ? "Registration failed. Please try again."
+                : "Login failed. Please check your credentials.");
+            console.error("Auth error:", message);
         }
     };
 
@@ -62,6 +63,7 @@ export default function FormComponent({ isSignUp = true }) {
                 })}
                 placeholder="Email"
             />
+
             {isSignUp && (
                 <>
                     {errors.firstName && <p>{errors.firstName.message}</p>}
@@ -76,6 +78,7 @@ export default function FormComponent({ isSignUp = true }) {
                     />
                 </>
             )}
+
             {errors.password && <p>{errors.password.message}</p>}
             <input
                 type="password"
@@ -99,11 +102,8 @@ export default function FormComponent({ isSignUp = true }) {
                     />
                 </>
             )}
-            {isSignUp ? (
-                <input type="submit" value="Sign up" />
-            ) : (
-                <input type="submit" value="Log in" />
-            )}
+
+            <input type="submit" value={isSignUp ? "Sign up" : "Log in"} />
         </FormStyled>
     );
 }

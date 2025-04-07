@@ -1,43 +1,78 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { WelcomePage } from './pages/welcome/welcome.page';
 import { HomePage } from './pages/home/home.page';
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { BadgesPage } from './pages/badges/badges.page';
 import { ExplorePage } from './pages/explore/explore.page';
 import { SettingsPage } from './pages/settings/settings.page';
 import { ErrorPage } from './pages/error/error.page';
 import { SignUpPage } from './pages/signUp/signUp.page';
-import { OutletComponent } from './components/outlet/outlet.component';
 import { LoginPage } from './pages/login/login.page';
 import './App.scss';
 
 function App() {
   const location = useLocation();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Define the routes where the navigation bar should be displayed
+  const checkAuthStatus = () => {
+    const token = localStorage.getItem("token");
+    return !!token;
+  };
+
+  useEffect(() => {
+    const authStatus = checkAuthStatus();
+    setIsAuthenticated(authStatus);
+  }, []);
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setIsAuthenticated(checkAuthStatus());
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
   const hideNavigationRoutes = ['/', '/signup', '/login'];
   const showNavigation = !hideNavigationRoutes.includes(location.pathname);
 
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true); 
+  };
 
-  console.log('Current Path:', location.pathname);
-  console.log('Show Navigation:', showNavigation);
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
+  };
 
   return (
     <>
       {showNavigation && <NavigationComponent />}
       <Routes>
-        <Route path="/" element={<OutletComponent />} >
-          <Route path="/" element={<WelcomePage />} />
-          <Route path="/signUp" element={<SignUpPage />} />
-          <Route path="/login" element={<LoginPage />} />
-        </Route>
+        <Route path="/" element={<WelcomePage />} />
+        <Route path="/signUp" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage onLoginSuccess={handleLoginSuccess} />} />
 
-        <Route path="/homepage" element={<HomePage />} />
-        <Route path="/explore" element={<ExplorePage />} />
-        <Route path="/badges" element={<BadgesPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="*" element={<ErrorPage />} />
+        <Route 
+          path="/homepage" 
+          element={isAuthenticated ? <HomePage /> : <Navigate to="/login" replace />} 
+        />
+        <Route 
+          path="/explore" 
+          element={isAuthenticated ? <ExplorePage /> : <Navigate to="/login" replace />} 
+        />
+        <Route 
+          path="/badges" 
+          element={isAuthenticated ? <BadgesPage /> : <Navigate to="/login" replace />} 
+        />
+        <Route 
+          path="/settings" 
+          element={isAuthenticated ? <SettingsPage /> : <Navigate to="/login" replace />} 
+        />
       </Routes>
     </>
   );
@@ -50,3 +85,4 @@ export default function RootApp() {
     </BrowserRouter>
   );
 }
+  
