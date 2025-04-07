@@ -10,6 +10,7 @@ import { ErrorPage } from './pages/error/error.page';
 import { SignUpPage } from './pages/signUp/signUp.page';
 import { LoginPage } from './pages/login/login.page';
 import { CourseHomepagePage } from './pages/courseHomepage/courseHomepage.page';
+import { VideoPage } from './pages/video/video.page';
 import './App.scss';
 
 function App() {
@@ -19,25 +20,24 @@ function App() {
   const hideNavigationRoutes = ['/', '/signup', '/login'];
   const showNavigation = !hideNavigationRoutes.includes(location.pathname);
 
-
-  console.log('Current Path:', location.pathname);
-  console.log('Show Navigation:', showNavigation);  
-
   return (
     <>
       {showNavigation && <NavigationComponent />}
-      <Routes>
-        <Route path="/" element={<WelcomePage />} />
-        <Route path="/signUp" element={<SignUpPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/homepage" element={<HomePage />} />
-        <Route path="/explore" element={<ExplorePage />} />
-        <Route path="/courseHomepage" element={<CourseHomepagePage />} />
-        <Route path="/badges" element={<BadgesPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="*" element={<ErrorPage />} />
+      <main>
+        <Routes>
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/signUp" element={<SignUpPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/homepage" element={<HomePage />} />
+          <Route path="/explore" element={<ExplorePage />} />
+          <Route path="/courseHomepage" element={<CourseHomepagePage />} />
+          <Route path="/video" element={<VideoPage />} />
+          <Route path="/badges" element={<BadgesPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="*" element={<ErrorPage />} />
 
-      </Routes>
+        </Routes>
+      </main>
     </>
   );
 }
