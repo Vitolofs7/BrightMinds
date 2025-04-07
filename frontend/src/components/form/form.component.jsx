@@ -37,7 +37,7 @@ export default function FormComponent({ isSignUp = true, onLoginSuccess }) {
                     }
                     
                     // Redirige a la página principal después de un login exitoso
-                    navigate("/homepage");
+                    navigate("/homepage"); // Redirige aquí directamente
                 } else {
                     throw new Error("No token received");
                 }
