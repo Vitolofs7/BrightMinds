@@ -7,6 +7,8 @@ import { ExplorePage } from './pages/explore/explore.page';
 import { SettingsPage } from './pages/settings/settings.page';
 import { SignUpPage } from './pages/signUp/signUp.page';
 import { LoginPage } from './pages/login/login.page';
+import { CourseHomepagePage } from './pages/courseHomepage/courseHomepage.page';
+import { VideoPage } from './pages/video/video.page';
 import './App.scss';
 import { ProfilePage } from './pages/profile/profile.page';
 
@@ -53,6 +55,7 @@ function App() {
   console.log("Location:", location.pathname);
   console.log("Show Navigation:", showNavigation);
 
+
   const handleLoginSuccess = () => {
     console.log("Login success, setting authentication...");
     setIsAuthenticated(true);
@@ -70,9 +73,11 @@ function App() {
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/signUp" element={<SignUpPage />} />
+
         <Route path="/login" element={isAuthenticated ? <Navigate to="/homepage" replace /> : <LoginPage onLoginSuccess={handleLoginSuccess} />} />
         
         {/* Ruta protegida para homepage */}
+
         <Route 
           path="/homepage" 
           element={isAuthenticated ? <HomePage /> : <Navigate to="/login" replace />} 

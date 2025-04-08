@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import navBGCover from "../../assets/navBGCover.svg";
 
-console.log(navBGCover);
 
 
 export const NavigationStyled = styled.div`
