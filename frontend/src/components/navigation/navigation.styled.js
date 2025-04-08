@@ -10,6 +10,7 @@ export const NavigationStyled = styled.div`
     z-index: 1000; 
     width: 100%; 
     border-top: 2px solid #D9D9D9;
+    height: 10vh;
 
     ul {
         display: flex;

@@ -1,9 +1,25 @@
 import styled from "styled-components";
 
 export const TitleStyled = styled.div`
-    padding-left: 5vw;
-    border-left: 5px solid var(--color-purple-dark); 
-    white-space: pre;
+
+    
+
+    >div {
+        display: flex;
+    }
+
+    img {
+        width: 20vw;
+        height: 20vw;
+        margin-right: 5vw;
+        align-self: center;
+    }
+
+    >div > div {
+        padding-left: 5vw;
+        border-left: 5px solid var(--color-purple-dark); 
+        white-space: pre;
+    }
 
 
 
@@ -39,6 +55,16 @@ export const TitleStyled = styled.div`
 
         p {
             font-size: 2rem;
+        }
+    }
+
+    .medium {
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        p {
+            font-size: 2.5rem;
         }
     }
 

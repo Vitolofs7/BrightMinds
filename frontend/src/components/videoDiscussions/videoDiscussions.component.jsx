@@ -11,7 +11,7 @@ export const VideoDiscussionsComponent = () => {
     return (
         <VideoDiscussionsStyled>
             <VideoCommentComponent profileIcon={tempProfileIcon} preview={true}  />
-            <SubTitleComponent text="Discussions" boldness="light" size="small" />
+            <SubTitleComponent text="Sort" boldness="light" size="small" />
             <VideoCommentComponent profileIcon={tempProfileIcon} commentText="This is a commentThis is a commentThis is a commentThis is a commentThis is a commentThis is a comment" likes="10" dislikes="2" commentsRecieved="5" preview={false} />
             <VideoCommentComponent profileIcon={tempProfileIcon} commentText="This is a comment" likes="10" dislikes="2" commentsRecieved="5" preview={false} />
             <VideoCommentComponent profileIcon={tempProfileIcon} commentText="This is a comment" likes="10" dislikes="2" commentsRecieved="5" preview={false} />

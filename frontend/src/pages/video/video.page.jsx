@@ -6,13 +6,14 @@ import { useState } from "react";
 import backArrowIcon from "../../assets/backArrowIcon.svg";
 import { Link } from "react-router-dom";
 import tempVideoPlayerPicture from "../../assets/tempVideoPlayerPicture.png"; // Placeholder for video player picture
+import { BackArrowComponent } from "../../components/backarrow/backarrow.component";
 
 export const VideoPage = () => {
   const [activeTab, setActiveTab] = useState("about"); // State to track the active tab
 
   return (
     <VideoStyled>
-      <Link to="/courseHomepage"> <img className="backArrow" src={backArrowIcon} alt="" /></Link>
+      <BackArrowComponent />
       <img src={tempVideoPlayerPicture} alt="" />
       <div className="descriptionContainer">
         <div className="descriptionSelector">

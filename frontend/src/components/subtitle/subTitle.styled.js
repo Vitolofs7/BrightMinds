@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const SubTitleStyled = styled.div`
+display: flex;
+gap: 0.5rem;
+
 &.light h2{
     font-weight: 400;
 }

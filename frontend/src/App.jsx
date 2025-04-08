@@ -11,6 +11,7 @@ import { CourseHomepagePage } from './pages/courseHomepage/courseHomepage.page';
 import { VideoPage } from './pages/video/video.page';
 import './App.scss';
 import { ProfilePage } from './pages/profile/profile.page';
+import { OutletComponent } from './components/outlet/outlet.component';
 
 function App() {
   const location = useLocation();
@@ -35,37 +36,51 @@ function App() {
   return (
     <>
       {showNavigation && <NavigationComponent />}
-      <Routes>
-        <Route path="/" element={<WelcomePage />} />
-        <Route path="/signUp" element={<SignUpPage />} />
 
-        <Route path="/login" element={isAuthenticated ? <Navigate to="/homepage" replace /> : <LoginPage onLoginSuccess={handleLoginSuccess} />} />
-        
-        {/* Protected route for homepage */}
+      <main>
+        <Routes>
+          <Route path='/' element={<OutletComponent />}>
+            <Route path="/" element={<WelcomePage />} />
+            <Route path="/signUp" element={isAuthenticated ? <Navigate to="/homepage" replace /> : <SignUpPage />} />
+            <Route path="/login" element={isAuthenticated ? <Navigate to="/homepage" replace /> : <LoginPage onLoginSuccess={handleLoginSuccess} />} />
+          </Route>
+          {/* Ruta protegida para homepage */}
 
-        <Route 
-          path="/homepage" 
-          element={isAuthenticated ? <HomePage /> : <Navigate to="/login" replace />} 
-        />
-        
-        {/* Protected route for explorar */}
-        <Route 
-          path="/explore" 
-          element={isAuthenticated ? <ExplorePage /> : <Navigate to="/login" replace />} 
-        />
-        
-        {/* Protected route for settings */}
-        <Route 
-          path="/settings" 
-          element={isAuthenticated ? <SettingsPage /> : <Navigate to="/login" replace />} 
-        />
-        
-        {/* Protected route for perfil */}
-        <Route 
-          path="/profile" 
-          element={isAuthenticated ? <ProfilePage onLogout={handleLogout} /> : <Navigate to="/login" replace />} 
-        />
-      </Routes>
+          <Route
+            path="/homepage"
+            element={isAuthenticated ? <HomePage /> : <Navigate to="/login" replace />}
+          />
+
+          {/* Ruta protegida para explorar */}
+          <Route
+            path="/explore"
+            element={isAuthenticated ? <ExplorePage /> : <Navigate to="/login" replace />}
+          />
+
+          <Route
+            path='/courseHomepage'
+            element={isAuthenticated ? <CourseHomepagePage /> : <Navigate to="/login" replace />}
+          />
+
+          <Route
+            path='/video'
+            element={isAuthenticated ? <VideoPage /> : <Navigate to="/login" replace />}
+          />
+
+          {/* Ruta protegida para settings */}
+          <Route
+            path="/settings"
+            element={isAuthenticated ? <SettingsPage /> : <Navigate to="/login" replace />}
+          />
+
+          {/* Ruta protegida para el perfil */}
+          <Route
+            path="/profile"
+            element={isAuthenticated ? <ProfilePage onLogout={handleLogout} /> : <Navigate to="/login" replace />}
+          />
+        </Routes>
+      </main >
+
     </>
   );
 }

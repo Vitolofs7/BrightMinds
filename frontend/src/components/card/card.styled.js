@@ -32,7 +32,7 @@ export const CardStyled = styled.div`
     align-items: center;
     border: 2px solid var(--color-purple-dark-medium);
     border-radius: 15px;
-    width: 80vw;
+    width: 100%;
     height: 10vh;
     padding: 0.5rem;
 
@@ -98,7 +98,7 @@ export const CardStyled = styled.div`
     width: 40vw;
     height: 15vh;
     overflow: hidden;
-    padding: 0.25rem;
+    padding: 0.5rem;
     padding-bottom: 0;
 
     >div:first-of-type {
@@ -144,4 +144,54 @@ export const CardStyled = styled.div`
     
 
 }
+
+.courseReading {
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 2px solid var(--color-purple-dark-medium);
+    border-radius: 15px;
+    width: 40vw;
+    padding: 0.5rem;
+    height: 15vh;
+
+    >div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    img {
+        width: 33px;
+        height: 33px;
+    }
+    p {
+        font-size: 0.8rem;
+        font-weight: 700;
+    }
+
+    > p {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+    }
+}
+
+    .courseExercise {
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid var(--color-purple-dark-medium);
+        border-radius: 15px;
+        width: 40vw;
+        padding: 0.5rem;
+        height: 15vh;
+        font-weight: 700;
+    }
 `

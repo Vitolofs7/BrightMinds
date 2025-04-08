@@ -7,7 +7,7 @@ align-items: center;
 
     input {
         width: 100%;
-        padding: 1rem;
+        padding: 0.75rem;
         margin: 0.5rem 0;
         border-radius: 5px;
         border: 1px solid #ccc;
