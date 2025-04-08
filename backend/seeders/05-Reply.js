@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert("Reply", [
+    await queryInterface.bulkInsert("replies", [
       {
         commentId: 1,
         content: "I completely agree with you!",
@@ -23,6 +23,6 @@ module.exports = {
   },
 
   async down(queryInterface) {
-    await queryInterface.bulkDelete("Reply", null, {});
+    await queryInterface.bulkDelete("replies", null, {});
   },
 };

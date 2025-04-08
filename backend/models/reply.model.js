@@ -18,7 +18,7 @@ const Reply = sequelize.define('Reply', {
     defaultValue: 0,
   },
 }, {
-  tableName: 'Reply',
+  tableName: 'replies',
   timestamps: true,
 });
 

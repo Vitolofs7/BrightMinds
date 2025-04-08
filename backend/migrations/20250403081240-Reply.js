@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Reply", {
+    await queryInterface.createTable("replies", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Comment",
+          model: "comments",
           key: "id",
         },
         onUpdate: "CASCADE",
@@ -44,6 +44,6 @@ module.exports = {
   },
 
   async down(queryInterface) {
-    await queryInterface.dropTable("Reply");
+    await queryInterface.dropTable("replies");
   },
 };

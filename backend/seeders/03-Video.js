@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert("Video", [
+    await queryInterface.bulkInsert("videos", [
       {
         videoUrl: "https://example.com/html-intro",
         videoName: "Introduction to HTML",
@@ -25,6 +25,6 @@ module.exports = {
   },
 
   async down(queryInterface) {
-    await queryInterface.bulkDelete("Video", null, {});
+    await queryInterface.bulkDelete("videos", null, {});
   },
 };
