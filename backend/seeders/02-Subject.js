@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert("Subject", [
+    await queryInterface.bulkInsert("subjects", [
       {
         subjectName: "HTML",
         description: "The standard markup language for creating web pages.",
@@ -19,6 +19,6 @@ module.exports = {
   },
 
   async down(queryInterface) {
-    await queryInterface.bulkDelete("Subject", null, {});
+    await queryInterface.bulkDelete("subjects", null, {});
   },
 };
