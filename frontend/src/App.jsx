@@ -15,41 +15,19 @@ import './App.scss';
 
 function App() {
   const location = useLocation();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const checkAuthStatus = () => {
-    const token = localStorage.getItem("token");
-    return !!token;
-  };
-
-  useEffect(() => {
-    const authStatus = checkAuthStatus();
-    setIsAuthenticated(authStatus);
-  }, []);
-
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setIsAuthenticated(checkAuthStatus());
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
+  const isAuthenticated = !!localStorage.getItem("token");
 
   const hideNavigationRoutes = ['/', '/signup', '/login'];
   const showNavigation = !hideNavigationRoutes.includes(location.pathname);
 
-
   const handleLoginSuccess = () => {
-    setIsAuthenticated(true); 
+    window.location.href = "/homepage";
   };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    setIsAuthenticated(false);
+    window.location.href = "/login";
   };
 
   return (
@@ -88,4 +66,3 @@ export default function RootApp() {
     </BrowserRouter>
   );
 }
-  
