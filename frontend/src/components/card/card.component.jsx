@@ -1,6 +1,6 @@
 import { CardStyled } from "./card.styled";
 
-export const CardComponent = ({ className, type, courseLength, icon, courseName, courseProgress }) => {
+export const CardComponent = ({ className, type, courseLength, icon, courseName, courseProgress, progressBar }) => {
 
     return (
         <CardStyled>
@@ -16,9 +16,11 @@ export const CardComponent = ({ className, type, courseLength, icon, courseName,
                 <div>
                     <h3>{courseName}</h3>
                     <p>{courseProgress}</p>
-                    <div className="progressBarContainer">
+                    {progressBar && (
+                        <div className="progressBarContainer">
                         <div className="progressBar"></div>
                     </div>
+                    )}
                 </div>
                 <div className="courseLength">
                     <p>{courseLength}</p>

@@ -22,8 +22,10 @@ export const HomePage = ({ username }) => {
             </CardContainerComponent>
             <SubTitleComponent text='Continue learning' boldness="light" size="small"/>
             <CardContainerComponent direction="vertical" className="cards">
-                <CardComponent icon={pythonLogo} color="yellow" type="courseLarge" courseName="html" courseLength='10 hours' courseProgress='50%' />
-                <CardComponent icon={pythonLogo} color="yellow" type="courseLarge" courseName="html" courseLength='10 hours' courseProgress='50%' />
+                <CardComponent icon={pythonLogo} color="yellow" type="courseLarge" courseName="html" courseLength='10 hours' courseProgress='50%'
+                progressBar={true} />
+                <CardComponent icon={pythonLogo} color="yellow" type="courseLarge" courseName="html" courseLength='10 hours' courseProgress='50%' 
+                progressBar={true}/>
             </CardContainerComponent>
 
         </HomeStyled>
