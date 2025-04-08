@@ -15,62 +15,28 @@ import { OutletComponent } from './components/outlet/outlet.component';
 
 function App() {
   const location = useLocation();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const checkAuthStatus = () => {
-    const token = localStorage.getItem("token");
-    console.log("Checking Auth Status - Token:", token);
-    return !!token;
-  };
-
-  // Al montar el componente, se chequea la autenticación
-  useEffect(() => {
-    const authStatus = checkAuthStatus();
-    setIsAuthenticated(authStatus);
-    console.log("Auth Status after mount:", authStatus);
-  }, []);
-
-  // Escucha cambios en la ubicación para actualizar el estado de autenticación
-  useEffect(() => {
-    const authStatus = checkAuthStatus();
-    setIsAuthenticated(authStatus);
-    console.log("Auth Status after location change:", authStatus);
-  }, [location]);
-
-  // Listener para cambios en localStorage (útil si se abren varias pestañas)
-  useEffect(() => {
-    const handleStorageChange = () => {
-      const authStatus = checkAuthStatus();
-      setIsAuthenticated(authStatus);
-      console.log("Auth Status after storage change:", authStatus);
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
+  const isAuthenticated = !!localStorage.getItem("token");
 
   const hideNavigationRoutes = ['/', '/signup', '/login'];
   const showNavigation = !hideNavigationRoutes.includes(location.pathname);
   console.log("Location:", location.pathname);
   console.log("Show Navigation:", showNavigation);
 
-
   const handleLoginSuccess = () => {
-    console.log("Login success, setting authentication...");
-    setIsAuthenticated(true);
+    window.location.href = "/homepage";
   };
 
   const handleLogout = () => {
     console.log("Logging out, removing token...");
     localStorage.removeItem("token");
-    setIsAuthenticated(false);
+    window.location.href = "/login";
   };
 
   return (
     <>
       {showNavigation && <NavigationComponent />}
+
       <main>
         <Routes>
           <Route path='/' element={<OutletComponent />}>
@@ -114,6 +80,7 @@ function App() {
           />
         </Routes>
       </main >
+
     </>
   );
 }
@@ -125,3 +92,4 @@ export default function RootApp() {
     </BrowserRouter>
   );
 }
+
