@@ -58,6 +58,7 @@ function App() {
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/signUp" element={<SignUpPage />} />
+
         <Route path="/login" element={<LoginPage onLoginSuccess={handleLoginSuccess} />} />
 
         <Route 
