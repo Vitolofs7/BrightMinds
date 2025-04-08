@@ -9,6 +9,8 @@ import { SettingsPage } from './pages/settings/settings.page';
 import { ErrorPage } from './pages/error/error.page';
 import { SignUpPage } from './pages/signUp/signUp.page';
 import { LoginPage } from './pages/login/login.page';
+import { CourseHomepagePage } from './pages/courseHomepage/courseHomepage.page';
+import { VideoPage } from './pages/video/video.page';
 import './App.scss';
 
 function App() {
@@ -39,6 +41,7 @@ function App() {
 
   const hideNavigationRoutes = ['/', '/signup', '/login'];
   const showNavigation = !hideNavigationRoutes.includes(location.pathname);
+
 
   const handleLoginSuccess = () => {
     setIsAuthenticated(true); 

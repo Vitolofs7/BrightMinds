@@ -21,6 +21,14 @@ export const SubTitleStyled = styled.div`
     font-size: 1.5rem;
 }
 
+&.yes {
+    border-bottom: 2px solid var(--color-purple-medium);
+}
+
+&.no {
+    border-bottom: none;
+}
+
 
 
 `

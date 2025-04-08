@@ -20,7 +20,9 @@ export const NavigationComponent = () => {
                 <li>
                     <NavLink 
                         to="/explore" 
-                        className={({ isActive }) => isActive ? "active" : ""}
+                        className={({ isActive }) => 
+                             isActive || ["/courseHomepage", "/video"].includes(location.pathname) ? "active" : ""
+                        }
                     >
                         <img src={exploreIcon} alt="Explore" />
                     </NavLink>
