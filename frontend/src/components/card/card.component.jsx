@@ -49,13 +49,13 @@ export const CardComponent = ({ className, type, courseLength, icon, courseName,
             }
 
             {type === 'courseReading' && <div className="courseReading">
+
                 <div>
                     <p>{courseLength}</p>
                     <img src={icon} alt="icon" />
                 </div>
 
                 <p>{courseName}</p>
-
             </div>
             }
 

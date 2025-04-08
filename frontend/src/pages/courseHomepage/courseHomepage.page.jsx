@@ -4,6 +4,7 @@ import { SubTitleComponent } from "../../components/subtitle/subTitle.component"
 import { CardContainerComponent } from "../../components/cardContainer/cardContainer.component";
 import { CardComponent } from "../../components/card/card.component";
 import { Link } from "react-router-dom";
+import { BackArrowComponent } from "../../components/backarrow/backarrow.component";
 import reactLogo from "../../assets/reactLogo.svg";
 import videoIcon from "../../assets/videoIcon.svg";
 import bookIcon from "../../assets/bookIcon.svg";
@@ -16,17 +17,16 @@ import backArrowIcon from "../../assets/backArrowIcon.svg";
 export const CourseHomepagePage = () => {
     return (
         <CourseHomepageStyled className="course-homepage-page">
-            <Link to="/homepage"> <img src={backArrowIcon} alt="" /></Link>
+            <BackArrowComponent />
             <TitleComponent text="Learn," boldText="React" logo={reactLogo} size="large" />
             <div>
                 <SubTitleComponent text="Videos" boldness="bold" size="small" icon={videoIcon} />
                 <CardContainerComponent direction="sideways">
-                    <CardComponent text="Introduction" icon={videoIcon} type="courseVideo" courseLength="5" courseName="Introduction" />
 
                    <Link to="/video"> <CardComponent text="Introduction" icon={videoIcon} type="courseVideo" courseLength="5" courseName="Introduction" /> </Link>
-                    <CardComponent text="Introduction" icon={videoIcon} type="courseVideo" courseLength="5" courseName="Introduction" />
-                    <CardComponent text="Introduction" icon={videoIcon} type="courseVideo" courseLength="5" courseName="Introduction" />
-                    <CardComponent text="Introduction" icon={videoIcon} type="courseVideo" courseLength="5" courseName="Introduction" />
+                   <Link to="/video"> <CardComponent text="Introduction" icon={videoIcon} type="courseVideo" courseLength="5" courseName="Introduction" /> </Link>
+                   <Link to="/video"> <CardComponent text="Introduction" icon={videoIcon} type="courseVideo" courseLength="5" courseName="Introduction" /> </Link>
+                   <Link to="/video"> <CardComponent text="Introduction" icon={videoIcon} type="courseVideo" courseLength="5" courseName="Introduction" /> </Link>
                 </CardContainerComponent>
             </div>
 
