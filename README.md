@@ -56,7 +56,7 @@ Bright Minds aims to solve this issue by providing tailored educational content 
 
 ## Usage
 
-1. Open the application in your browser at http://localhost:.
+1. Open the application in your browser at http://localhost:5173/.
 2. Sign up or log in to access personalized learning content.
 3. Explore courses, track your progress, and engage with the community.
 
