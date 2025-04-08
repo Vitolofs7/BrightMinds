@@ -14,14 +14,6 @@ export const LoginStyled = styled.div`
     margin-bottom: 2.5vh;
 }
 
-.forgotPassword h2 {
-    margin-top: 2.5vh;
-    text-align: right;
-    font-size: 1.2rem;
-    color: #007bff;
-    cursor: pointer;
-}
-
 .forgotPassword h2:hover {
     text-decoration: underline;
 }
