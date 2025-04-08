@@ -29,7 +29,7 @@ export const NavigationComponent = () => {
                 </li>
                 <li>
                     <NavLink 
-                        to="/badges" 
+                        to="/profile" 
                         className={({ isActive }) => isActive ? "active" : ""}
                     >
                         <img src={badgesIcon} alt="Badges" />
