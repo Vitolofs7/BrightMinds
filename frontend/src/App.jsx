@@ -58,12 +58,12 @@ function App() {
           />
 
           <Route
-            path='/courseHomepage'
+            path='/Courses/:courseSlug'
             element={isAuthenticated ? <CourseHomepagePage /> : <Navigate to="/login" replace />}
           />
 
           <Route
-            path='/video'
+            path='/Courses/:courseSlug/:videoId'
             element={isAuthenticated ? <VideoPage /> : <Navigate to="/login" replace />}
           />
 
