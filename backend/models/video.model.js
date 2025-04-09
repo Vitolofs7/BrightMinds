@@ -29,7 +29,7 @@ const Video = sequelize.define('Video', {
     onDelete: 'CASCADE',
   },
 }, {
-  tableName: 'Video',
+  tableName: 'videos',
   timestamps: true,
 });
 

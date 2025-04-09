@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('User', {
+    await queryInterface.createTable('users', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -35,8 +35,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    console.log("Running migration: Dropping 'User' table");
-    await queryInterface.dropTable('User');
-    console.log("'User' table dropped successfully");
+    await queryInterface.dropTable('users');
   }
 };

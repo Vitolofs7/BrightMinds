@@ -20,14 +20,16 @@ export const NavigationComponent = () => {
                 <li>
                     <NavLink 
                         to="/explore" 
-                        className={({ isActive }) => isActive ? "active" : ""}
+                        className={({ isActive }) => 
+                             isActive || ["/courseHomepage", "/video"].includes(location.pathname) ? "active" : ""
+                        }
                     >
                         <img src={exploreIcon} alt="Explore" />
                     </NavLink>
                 </li>
                 <li>
                     <NavLink 
-                        to="/badges" 
+                        to="/profile" 
                         className={({ isActive }) => isActive ? "active" : ""}
                     >
                         <img src={badgesIcon} alt="Badges" />

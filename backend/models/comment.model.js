@@ -22,7 +22,7 @@ const Comment = sequelize.define('Comment', {
     defaultValue: 0,
   },
 }, {
-  tableName: 'Comment',
+  tableName: 'comments',
   timestamps: true,
 });
 
