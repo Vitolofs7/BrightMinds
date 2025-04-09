@@ -1,11 +1,9 @@
 import { CardStyled } from "./card.styled";
+import { useVideosData } from "../../utils/hooks/useVideosData";
 
 export const CardComponent = ({ className, type, courseLength, icon, courseName, courseProgress }) => {
 
-    const randomProgress = () => {
-        return Math.floor(Math.random() * 100) + 1;
 
-    }
 
 
 
@@ -22,9 +20,9 @@ export const CardComponent = ({ className, type, courseLength, icon, courseName,
                 <img src={icon} alt="" />
                 <div>
                     <h3>{courseName}</h3>
-                    <p>{randomProgress()}%</p>
+                    <p>{courseProgress}%</p>
                     <div className="progressBarContainer">
-                        <div className="progressBar" style={{ width: `${randomProgress()}%` }}></div>
+                        <div className="progressBar" style={{ width: `${courseProgress}%` }}></div>
                     </div>
                 </div>
                 <div className="courseLength">
@@ -42,7 +40,7 @@ export const CardComponent = ({ className, type, courseLength, icon, courseName,
                 <img src={icon} alt="" />
 
                 <div className="videoLength">
-                    <div className="videoProgress" style={{ width: `${randomProgress()}%` }}></div>
+                    <div className="videoProgress" style={{ width: `${courseProgress}%` }}></div>
                 </div>
 
             </div>

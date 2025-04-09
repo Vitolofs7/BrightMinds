@@ -1,6 +1,6 @@
 import { VideoCommentStyled } from "./videoComment.styled";
 
-export const VideoCommentComponent = ({ profileIcon, commentText, likes, dislikes, commentsRecieved, preview }) => {
+export const VideoCommentComponent = ({ profileIcon, commentText, commentLikes, commentDislikes, commentsRecieved, preview, commentDate }) => {
 
     
     return (
@@ -18,9 +18,9 @@ export const VideoCommentComponent = ({ profileIcon, commentText, likes, dislike
                     <div>
                         <p>{commentText}</p>
                         <div className="comment-stats">
-                            <span>{likes} L</span>
-                            <span>{dislikes} DL</span>
-                            <span>{commentsRecieved} C</span>
+                            <span>{commentLikes} L</span>
+                            <span>{commentDislikes} DL</span>
+                            {/* <span>{commentDate} C</span> */}
                         </div>
                     </div>
                 </>

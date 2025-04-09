@@ -16,4 +16,6 @@ export const CourseHomepageStyled = styled.div`
     .cardContainer {
         margin-bottom: 1rem;
     }
+
+    
 `

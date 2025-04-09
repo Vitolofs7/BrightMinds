@@ -1,24 +1,38 @@
 import { useState, useEffect } from "react";
 
-export const useVideosData = () => {
+export const useVideosData = (videoId) => {
     const [videosList, setVideosList] = useState([]);
+    const [video, setVideo] = useState(null); // State to hold the selected video
 
-    const getData = async () => {
+    const getData = async (videoId) => {
         try {
-            const response = await fetch('http://localhost:8080/videos'); // Add your API endpoint here
+            const token = localStorage.getItem('token'); // Retrieve the token from local storage
+            const response = await fetch('http://localhost:8080/api/videos', {
+                headers: {
+                    'Authorization': `Bearer ${token}`, // Add the token to the Authorization header
+                    'Content-Type': 'application/json',
+                },
+            });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            setVideosList(data);
+            
+            if (videoId) {
+                const foundVideo = data.find((vid) => vid.id == videoId);
+                setVideo(foundVideo || null); // Set the selected video
+            } else {
+                setVideosList(data); // Set the list of videos
+            }
+
         } catch (error) {
             console.error('Error fetching videos:', error);
         }
     };
 
     useEffect(() => {
-        getData();
-    }, []);
+        getData(videoId);
+    }, [videoId]);
 
-    return { videosList };
+    return { videosList, video };
 }
