@@ -5,7 +5,13 @@ export const useSubjectsData = () => {
 
     const getData = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/subjects'); // Add your API endpoint here
+            const token = localStorage.getItem('token'); // Retrieve the token from local storage
+            const response = await fetch('http://localhost:8080/api/subjects', {
+                headers: {
+                    'Authorization': `Bearer ${token}`, // Add the token to the Authorization header
+                    'Content-Type': 'application/json',
+                },
+            });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
