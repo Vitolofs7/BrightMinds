@@ -11,7 +11,6 @@ import bookIcon from "../../assets/bookIcon.svg";
 import checkmarkFilledIcon from "../../assets/checkmarkFilledIcon.svg";
 import checkmarkEmptyIcon from "../../assets/checkmarkEmptyIcon.svg";
 import controllerIcon from "../../assets/controllerIcon.svg";
-import backArrowIcon from "../../assets/backArrowIcon.svg";
 
 
 export const CourseHomepagePage = () => {

@@ -4,12 +4,15 @@ import { SubTitleComponent } from "../../components/subtitle/subTitle.component"
 import { CardComponent } from "../../components/card/card.component";
 import { CardContainerComponent } from "../../components/cardContainer/cardContainer.component";
 import { Link } from "react-router-dom";
+import { useSubjectsData } from "../../utils/hooks/useSubjectsData";
 import pythonLogo from "../../assets/pythonLogo.svg";
 
 
 export const HomePage = ({ username }) => {
     username = 'user'
 
+    const { subjectsList } = useSubjectsData();
+    console.log(subjectsList)
 
     return (
         <HomeStyled>

@@ -2,6 +2,7 @@ import { VideoCommentStyled } from "./videoComment.styled";
 
 export const VideoCommentComponent = ({ profileIcon, commentText, likes, dislikes, commentsRecieved, preview }) => {
 
+    
     return (
         <VideoCommentStyled>
             {preview ? (
