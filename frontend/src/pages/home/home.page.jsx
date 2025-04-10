@@ -8,8 +8,8 @@ import { useSubjectsData } from "../../utils/hooks/useSubjectsData";
 import { LoaderComponent } from "../../components/loader/loader.component";
 import pythonLogo from "../../assets/pythonLogo.svg";
 
-
 export const HomePage = ({ username }) => {
+
     username = 'user'
 
     const { subjectsList, loading } = useSubjectsData();
@@ -74,3 +74,4 @@ export const HomePage = ({ username }) => {
         );
     }
 }
+
