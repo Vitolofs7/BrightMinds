@@ -30,49 +30,49 @@ export const ExplorePage = ({ username }) => {
         />
         <div className="contentContainer">
           <SearchbarComponent />
-          <CardContainerComponent direction="vertical" className="cards">
-            <CardComponent
-              icon={HTMLicon}
-              color="yellow"
-              type="courseLarge"
-              courseName="HTML for beginners"
-              courseLength="10 hours"
-              progressBar={false}
-            />
-            <CardComponent
-              icon={CSSicon}
-              color="yellow"
-              type="courseLarge"
-              courseName="CSS for beginners"
-              courseLength="10 hours"
-              progressBar={false}
-            />
-            <CardComponent
-              icon={tailwindlogo}
-              color="yellow"
-              type="courseLarge"
-              courseName="Tailwind"
-              courseLength="10 hours"
-              progressBar={false}
-            />
-            <CardComponent
-              icon={ReactLogo}
-              color="yellow"
-              type="courseLarge"
-              courseName="React"
-              courseLength="10 hours"
-              progressBar={false}
-            />
-            <CardComponent
-              icon={pythonLogo}
-              color="yellow"
-              type="courseLarge"
-              courseName="Python"
-              courseLength="10 hours"
-              progressBar={false}
-            />
-          </CardContainerComponent>
         </div>
+        <CardContainerComponent direction="vertical" className="cards">
+          <CardComponent
+            icon={HTMLicon}
+            color="yellow"
+            type="courseLarge"
+            courseName="HTML for beginners"
+            courseLength="10 hours"
+            progressBar={false}
+          />
+          <CardComponent
+            icon={CSSicon}
+            color="yellow"
+            type="courseLarge"
+            courseName="CSS for beginners"
+            courseLength="10 hours"
+            progressBar={false}
+          />
+          <CardComponent
+            icon={tailwindlogo}
+            color="yellow"
+            type="courseLarge"
+            courseName="Tailwind"
+            courseLength="10 hours"
+            progressBar={false}
+          />
+          <CardComponent
+            icon={ReactLogo}
+            color="yellow"
+            type="courseLarge"
+            courseName="React"
+            courseLength="10 hours"
+            progressBar={false}
+          />
+          <CardComponent
+            icon={pythonLogo}
+            color="yellow"
+            type="courseLarge"
+            courseName="Python"
+            courseLength="10 hours"
+            progressBar={false}
+          />
+        </CardContainerComponent>
       </ExploreStyled>
     </>
   );
