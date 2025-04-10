@@ -31,11 +31,11 @@ export const CardComponent = ({
             <h3>{courseName}</h3>
             {progressBar && (
                 <>
-            <p>{randomProgress()}%</p>
+            <p>{courseProgress}%</p>
               <div className="progressBarContainer">
                 <div
                   className="progressBar"
-                  style={{ width: `${randomProgress()}%` }}
+                  style={{ width: `${courseProgress}%` }}
                 ></div>
               </div>
               </>

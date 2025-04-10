@@ -14,6 +14,9 @@ import controllerIcon from "../../assets/controllerIcon.svg";
 import { useVideosData } from "../../utils/hooks/useVideosData";
 import { useSubjectsData } from "../../utils/hooks/useSubjectsData";
 import { LoaderComponent } from "../../components/loader/loader.component";
+import html5Logo from "../../assets/html5Logo.svg";
+import javascriptLogo from "../../assets/javascriptLogo.svg";
+import pythonLogo from "../../assets/pythonLogo.svg";
 
 
 export const CourseHomepagePage = () => {
@@ -26,8 +29,24 @@ export const CourseHomepagePage = () => {
 
     }
 
+    const getIconBySubject = (subjectName) => {
+            switch (subjectName.toLowerCase()) {
+                case 'html':
+                    return html5Logo;
+                case 'javascript':
+                    return javascriptLogo;
+                case 'python':
+                    return pythonLogo;
+                case 'react':
+                    return reactLogo2;
+                case 'css':
+                    return cssLogo;
+                default:
+                    return pythonLogo; // Default icon if no match is found
+            }
+        };
+
     const { videosList } = useVideosData();
-    console.log(videosList)
 
     if (loading) {
         return (
@@ -40,7 +59,7 @@ export const CourseHomepagePage = () => {
         return (
             <CourseHomepageStyled className="course-homepage-page">
                 <BackArrowComponent />
-                <TitleComponent text="Learn," boldText={subject?.subjectName} logo={reactLogo} size="large" />
+                <TitleComponent text="Learn," boldText={subject?.subjectName} logo={getIconBySubject(subject.subjectName)} size="large" />
                 <div>
                     <SubTitleComponent text="Videos" boldness="bold" size="small" icon={videoIcon} />
                     <CardContainerComponent direction="sideways">

@@ -26,29 +26,30 @@ export const CardStyled = styled.div`
     background-color: #fff;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     border: 1px solid #d0e0ff;
     border-radius: 15px;
-    width: 80vw;
+    width: 100%;
     height: 80px;
     padding: 0.5rem;
+    gap: 0.5rem;
 
     > div:first-of-type {
       width: 60%;
-      height: 100%;
     }
     img {
-      width: 33px;
+      /* width: 33px;
       height: 33px;
       position: absolute;
-      left: 1rem;
+      left: 1rem; */
     }
     h3 {
       font-size: 1.4rem;
       font-weight: bold;
       color: var(--color-purple-dark);
-      padding: 16px 10px;
+      /* padding: 16px 10px; */
+      height: 100%;
     }
     p {
       font-size: 0.8rem;
@@ -56,7 +57,8 @@ export const CardStyled = styled.div`
     }
 
     .courseLength {
-      position: absolute;
+      /* position: absolute; */
+      white-space: nowrap;
       right: 0.25rem;
       top: 1.5rem;
       background-color: var(--color-yellow-saturated);

@@ -4,9 +4,8 @@ export const SearchbarContainer = styled.div`
   background-color: #fff;
   border: 1px var(--color-purple-dark-medium) solid;
   border-radius: 10px;
-  width: 80vw;
+  width: 100%;
   padding: 10px;
-  margin-left: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
@@ -15,6 +14,7 @@ export const SearchbarContainer = styled.div`
 
 export const SearchbarStyled = styled.input`
   border: none;
+  width: 100%;
   &:focus {
     outline: none;
   }

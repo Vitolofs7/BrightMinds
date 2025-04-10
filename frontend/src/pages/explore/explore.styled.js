@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-export const HomeStyled = styled.div`
+export const ExploreStyled = styled.div`
 margin-top: 20%;
 margin-left: 5%;
-/* margin-right: 5%; */
 .title {
     margin-bottom: 5vh;
 }
@@ -16,7 +15,8 @@ margin-left: 5%;
     margin-bottom: 2rem;
 }
 
-/* [class~='cardContainer']:last-of-type {
-    margin-bottom: 12vh;
-} */
+.contentContainer {
+    width: 100%;
+    padding-right: 5%;
+}
 `

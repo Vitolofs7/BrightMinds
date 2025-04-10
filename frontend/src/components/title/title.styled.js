@@ -9,8 +9,8 @@ export const TitleStyled = styled.div`
     }
 
     img {
-        width: 20vw;
-        height: 20vw;
+        width: 15vw;
+        height: 15vw;
         margin-right: 5vw;
         align-self: center;
     }

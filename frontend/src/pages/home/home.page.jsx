@@ -11,13 +11,16 @@ import html5Logo from "../../assets/html5Logo.svg";
 import javascriptLogo from "../../assets/javascriptLogo.svg";
 import reactLogo2 from "../../assets/reactLogo2.svg";
 import cssLogo from "../../assets/cssLogo.svg";
+import { useUser } from "../../utils/userProvider/userProvider";
 
 export const HomePage = ({ username }) => {
 
-    username = 'user'
+
+
+
+    username = localStorage.getItem("userName") || username;
 
     const { subjectsList, loading } = useSubjectsData();
-    console.log(subjectsList)
 
     const randomProgress = () => {
         return Math.floor(Math.random() * 100) + 1;
@@ -55,10 +58,16 @@ export const HomePage = ({ username }) => {
                 {subjectsList && subjectsList.data?.length > 0 ? (
                     <CardContainerComponent direction="sideways" className="cards">
                         {subjectsList.data.map((subject) => (
+                                <Link to={`/Courses/${subject.subjectName}`} key={subject.id}>
+                                    <CardComponent icon={getIconBySubject(subject.subjectName)} type="courseSmall" courseName={subject.subjectName} courseLength='10 hours' />
+                                </Link>
+                        ))}
+                        {subjectsList.data.map((subject) => (
                             <Link to={`/Courses/${subject.subjectName}`} key={subject.id}>
                                 <CardComponent icon={getIconBySubject(subject.subjectName)} type="courseSmall" courseName={subject.subjectName} courseLength='10 hours' />
                             </Link>
                         ))}
+
                     </CardContainerComponent>
                 ) : (
                     <p>No subjects available</p>
@@ -67,11 +76,16 @@ export const HomePage = ({ username }) => {
                 {subjectsList && subjectsList.data?.length > 0 ? (
                     <CardContainerComponent direction="vertical" className="cards">
                         {subjectsList.data.map((subject) => (
+                                <Link to={`/Courses/${subject.subjectName}`} key={subject.id}>
+                                    <CardComponent progressBar={true} courseProgress={randomProgress()} icon={getIconBySubject(subject.subjectName)} type="courseLarge" courseName={subject.subjectName} courseLength='10 hours' />
+                                </Link>
+                        ))}
+                        {subjectsList.data.map((subject) => (
                             <Link to={`/Courses/${subject.subjectName}`} key={subject.id}>
-                                <CardComponent courseProgress={randomProgress()} icon={getIconBySubject(subject.subjectName)} type="courseLarge" courseName={subject.subjectName} courseLength='10 hours' />
+                                <CardComponent progressBar={true} courseProgress={randomProgress()} icon={getIconBySubject(subject.subjectName)} type="courseLarge" courseName={subject.subjectName} courseLength='10 hours' />
                             </Link>
                         ))}
-                        
+
                     </CardContainerComponent>
                 ) : (
                     <p>No subjects available</p>
