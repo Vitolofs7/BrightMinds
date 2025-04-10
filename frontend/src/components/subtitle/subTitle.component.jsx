@@ -1,4 +1,5 @@
-import { SubTitleStyled } from "./subtitle.styled.js";
+import { SubTitleStyled } from "../subtitle/subTitle.styled";
+import React from "react";
 
 
 export const SubTitleComponent = ({ text, boldness, size, icon, onClick, underline}) => {
