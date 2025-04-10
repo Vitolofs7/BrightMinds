@@ -1,4 +1,4 @@
-import { SubTitleStyled } from "../subtitle/subTitle.styled";
+import { SubTitleStyled } from "./fuckingvirk";
 import React from "react";
 
 
