@@ -4,7 +4,6 @@ import { registerUser, loginUser } from "../../services/auth.service";
 import { useNavigate } from "react-router-dom";
 
 export default function FormComponent({ isSignUp = true, onLoginSuccess }) {
-    const { setUser } = useUser();
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
     const password = watch("password");
     const navigate = useNavigate();
