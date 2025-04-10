@@ -1,0 +1,54 @@
+import styled from "styled-components";
+import navBGCover from "../../assets/navBGCover.svg";
+
+
+
+export const NavigationStyled = styled.div`
+    position: fixed;
+    bottom: 0;
+    background-color: var(--color-purple-light);
+    z-index: 1000; 
+    width: 100%; 
+    border-top: 2px solid #D9D9D9;
+    height: 10vh;
+
+    ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 1rem 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    li {
+        font-size: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--color-purple-dark);
+        padding: 0.5rem;
+        display: flex;
+        transition: 0.3s;
+    }
+
+    a.active {
+        background-image: url("${navBGCover}");
+        background-size: cover; 
+        background-position: center; 
+        width: 100%;
+        height: 100%;
+        
+        img {
+            filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg);
+            transition: transform 0.3s ease; /* Smooth scaling animation */
+        }
+
+        img:active {
+            transform: scale(1.2); /* Scale the icon when clicked */
+        }
+
+    }
+
+`;
