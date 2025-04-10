@@ -8,7 +8,7 @@ import commentRoutes from './routes/comment.routes.js';
 import replyRoutes from './routes/reply.routes.js';
 import authRoutes from './routes/auth.routes.js';
 import { sequelize } from './models/index.js';
-import videoRoutes from './routes/video.routes.js'
+import videoRoutes from './routes/video.routes.js';
 import subjectRoutes from './routes/subject.routes.js';
 
 dotenv.config();
@@ -51,3 +51,6 @@ sequelize.sync({ force: true })
   .catch((error) => {
     console.error("Error synchronizing the database:", error);
   });
+
+// 👇 Esta línea es la clave para solucionar el error
+export default app;
