@@ -11,7 +11,6 @@ import html5Logo from "../../assets/html5Logo.svg";
 import javascriptLogo from "../../assets/javascriptLogo.svg";
 import reactLogo2 from "../../assets/reactLogo2.svg";
 import cssLogo from "../../assets/cssLogo.svg";
-import { useUser } from "../../utils/userProvider/userProvider";
 
 export const HomePage = ({ username }) => {
 
@@ -62,11 +61,7 @@ export const HomePage = ({ username }) => {
                                     <CardComponent icon={getIconBySubject(subject.subjectName)} type="courseSmall" courseName={subject.subjectName} courseLength='10 hours' />
                                 </Link>
                         ))}
-                        {subjectsList.data.map((subject) => (
-                            <Link to={`/Courses/${subject.subjectName}`} key={subject.id}>
-                                <CardComponent icon={getIconBySubject(subject.subjectName)} type="courseSmall" courseName={subject.subjectName} courseLength='10 hours' />
-                            </Link>
-                        ))}
+                        
 
                     </CardContainerComponent>
                 ) : (
@@ -81,10 +76,11 @@ export const HomePage = ({ username }) => {
                                 </Link>
                         ))}
                         {subjectsList.data.map((subject) => (
-                            <Link to={`/Courses/${subject.subjectName}`} key={subject.id}>
-                                <CardComponent progressBar={true} courseProgress={randomProgress()} icon={getIconBySubject(subject.subjectName)} type="courseLarge" courseName={subject.subjectName} courseLength='10 hours' />
-                            </Link>
+                                <Link to={`/Courses/${subject.subjectName}`} key={subject.id}>
+                                    <CardComponent progressBar={true} courseProgress={randomProgress()} icon={getIconBySubject(subject.subjectName)} type="courseLarge" courseName={subject.subjectName} courseLength='10 hours' />
+                                </Link>
                         ))}
+                        
 
                     </CardContainerComponent>
                 ) : (

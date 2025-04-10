@@ -2,8 +2,6 @@ import { useForm } from "react-hook-form";
 import { FormStyled } from "./form.styled";
 import { registerUser, loginUser } from "../../services/auth.service";
 import { useNavigate } from "react-router-dom";
-import { getUsername } from "../../App";
-import { useUser } from "../../utils/userProvider/userProvider";
 
 export default function FormComponent({ isSignUp = true, onLoginSuccess }) {
     const { setUser } = useUser();

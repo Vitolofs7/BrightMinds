@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { WelcomePage } from './pages/welcome/welcome.page';
 import { HomePage } from './pages/home/home.page';
@@ -12,13 +11,6 @@ import { VideoPage } from './pages/video/video.page';
 import './App.scss';
 import { ProfilePage } from './pages/profile/profile.page';
 import { OutletComponent } from './components/outlet/outlet.component';
-import { UserProvider } from './utils/userProvider/userProvider';
-
-export let username
-
-export const getUsername = sendUsername => {
-  username = sendUsername
-}
 
 function App() {
   const location = useLocation();
@@ -41,7 +33,6 @@ function App() {
 
   return (
     <>
-      <UserProvider>
         {showNavigation && <NavigationComponent />}
 
         <main>
@@ -88,7 +79,6 @@ function App() {
           </Routes>
         </main >
 
-      </UserProvider>
 
     </>
   );

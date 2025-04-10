@@ -17,6 +17,8 @@ import { LoaderComponent } from "../../components/loader/loader.component";
 import html5Logo from "../../assets/html5Logo.svg";
 import javascriptLogo from "../../assets/javascriptLogo.svg";
 import pythonLogo from "../../assets/pythonLogo.svg";
+import cssLogo from "../../assets/cssLogo.svg";
+import reactLogo2 from "../../assets/reactLogo2.svg";
 
 
 export const CourseHomepagePage = () => {
@@ -45,6 +47,9 @@ export const CourseHomepagePage = () => {
                     return pythonLogo; // Default icon if no match is found
             }
         };
+    
+
+    
 
     const { videosList } = useVideosData();
 
