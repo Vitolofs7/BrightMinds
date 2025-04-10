@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const CardContainerStyled = styled.div`
-
-&.sideways {
+  &.sideways {
     display: flex;
     flex-direction: row;
     justify-content: start;
@@ -11,18 +10,16 @@ export const CardContainerStyled = styled.div`
     overflow-x: auto;
     padding-right: 5%;
     &::-webkit-scrollbar {
-        display: none;
+      display: none;
     }
-}
+  }
 
-
-&.vertical {
+  &.vertical {
     display: flex;
     flex-direction: column;
     justify-content: start;
     gap: 1rem;
-    margin-right: 5%;
-    
-}
-
-`
+    width: 100%;
+    align-items: center;
+    }
+`;

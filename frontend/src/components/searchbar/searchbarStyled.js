@@ -6,7 +6,6 @@ export const SearchbarContainer = styled.div`
   border-radius: 10px;
   width: 80vw;
   padding: 10px;
-  margin-left: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;

@@ -9,23 +9,26 @@ import CSSicon from "../../assets/CSSicon.svg";
 import tailwindlogo from "../../assets/tailwindlogo.svg";
 import ReactLogo from "../../assets/ReactLogo.svg";
 import { SearchbarComponent } from "../../components/searchbar/searchbarComponent";
+import { StyledTopSection } from "./explore.styled";
 
 export const ExplorePage = ({ username }) => {
   return (
     <>
       <HomeStyled>
-        <TitleComponent
-          text="hello, "
-          boldText={username}
-          logo={null}
-          size="small"
-        />
-        <SubTitleComponent
-          text="Start learning!"
-          boldness="light"
-          size="small"
-        />
-        <SearchbarComponent />
+        <StyledTopSection>
+          <TitleComponent
+            text="hello, "
+            boldText={username}
+            logo={null}
+            size="small"
+          />
+          <SubTitleComponent
+            text="Start learning!"
+            boldness="light"
+            size="small"
+          />
+          <SearchbarComponent />
+        </StyledTopSection>
         <CardContainerComponent direction="vertical" className="cards">
           <CardComponent
             icon={HTMLicon}

@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const SubTitleStyled = styled.div`
 display: flex;
 gap: 0.5rem;
+width: 80vw;
 
 &.light h2{
     font-weight: 400;

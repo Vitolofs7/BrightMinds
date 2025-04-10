@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const TitleStyled = styled.div`
-
+width: 80vw;
     
 
     >div {
