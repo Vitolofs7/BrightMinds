@@ -7,7 +7,7 @@ import { TitleComponent } from "../../components/title/title.component";
 import HTMLicon from "../../assets/HTMLicon.svg";
 import CSSicon from "../../assets/CSSicon.svg";
 import tailwindlogo from "../../assets/tailwindlogo.svg";
-import ReactLogo from "../../assets/ReactLogo.svg";
+import ReactLogo from "../../assets/reactLogo.svg";
 import { SearchbarComponent } from "../../components/searchbar/searchbarComponent";
 
 export const ExplorePage = ({ username }) => {
