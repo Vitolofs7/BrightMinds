@@ -1,9 +1,8 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "type": "module",
   "main": "index.js",
-  "type": "module",
+  
   "scripts": {
     "////////////////////////// - 3": "COMMENT: ATTENTION!!! db:reset & db:reset-and-start will reset XREATE database",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
