@@ -9,6 +9,8 @@ import { LoaderComponent } from "../../components/loader/loader.component";
 import pythonLogo from "../../assets/pythonLogo.svg";
 import html5Logo from "../../assets/html5Logo.svg";
 import javascriptLogo from "../../assets/javascriptLogo.svg";
+import reactLogo2 from "../../assets/reactLogo2.svg";
+import cssLogo from "../../assets/cssLogo.svg";
 
 
 export const HomePage = ({ username }) => {
@@ -28,6 +30,12 @@ export const HomePage = ({ username }) => {
                 return html5Logo;
             case 'javascript':
                 return javascriptLogo;
+            case 'python':
+                return pythonLogo;
+            case 'react':
+                return reactLogo2;
+            case 'css':
+                return cssLogo;
             default:
                 return pythonLogo; // Default icon if no match is found
         }
@@ -49,11 +57,6 @@ export const HomePage = ({ username }) => {
                         {subjectsList.data.map((subject) => (
                             <Link to={`/Courses/${subject.subjectName}`} key={subject.id}>
                                 <CardComponent icon={getIconBySubject(subject.subjectName)} type="courseSmall" courseName={subject.subjectName} courseLength='10 hours' />
-                            </Link>
-                        ))}
-                        {subjectsList.data.map((subject) => (
-                            <Link to={`/Courses/${subject.subjectName}`} key={subject.id}>
-                                <CardComponent icon={pythonLogo} type="courseSmall" courseName={subject.subjectName} courseLength='10 hours' />
                             </Link>
                         ))}
                     </CardContainerComponent>
