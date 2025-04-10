@@ -17,12 +17,26 @@ export const VideoPage = () => {
   const { commentsList } = useCommentsData(videoId); // Fetch comments data
   const { video } = useVideosData(videoId); // Fetch videos data
 
-  
+  const formatYouTubeUrl = (url) => {
+    if (!url.includes("youtube.com")) return url; // Return the URL as is if it's not a YouTube link
+    const videoId = new URL(url).searchParams.get("v"); // Extract the video ID from the URL
+    return `https://www.youtube.com/embed/${videoId}`;
+  };
 
   return (
     <VideoStyled>
       <BackArrowComponent />
-      <img src={tempVideoPlayerPicture} alt="" />
+      {video?.videoUrl ? (
+        <iframe
+          className="video-frame"
+          src={formatYouTubeUrl(video.videoUrl)}
+          title={video.videoName}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      ) : (
+        <p>Loading video...</p>
+      )}
       <div className="descriptionContainer">
         <div className="descriptionSelector">
           {/* Tabs to switch between components */}

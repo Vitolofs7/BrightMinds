@@ -53,6 +53,8 @@ export const CourseHomepagePage = () => {
 
     const { videosList } = useVideosData();
 
+    const filteredVideos = videosList?.filter(video => video.subjectId === subject?.id);
+
     if (loading) {
         return (
             <LoaderComponent />
@@ -69,19 +71,9 @@ export const CourseHomepagePage = () => {
                     <SubTitleComponent text="Videos" boldness="bold" size="small" icon={videoIcon} />
                     <CardContainerComponent direction="sideways">
 
-                        {videosList && videosList?.length > 0 ? (
-                            videosList.map((video) => (
+                        {filteredVideos && filteredVideos?.length > 0 ? (
+                            filteredVideos.map((video) => (
                                 <Link to={`/Courses/${courseSlug}/${video.id}`} key={video.id}>
-                                    <CardComponent courseProgress={randomProgress()} type="courseVideo" courseLength="10" courseName={video.videoName} icon={videoIcon} />
-                                </Link>
-                            ))
-                        ) : (
-                            <p>No videos available</p>
-                        )}
-
-                        {videosList && videosList?.length > 0 ? (
-                            videosList.map((video) => (
-                                <Link to="/Video" key={video.id}>
                                     <CardComponent courseProgress={randomProgress()} type="courseVideo" courseLength="10" courseName={video.videoName} icon={videoIcon} />
                                 </Link>
                             ))
