@@ -39,14 +39,27 @@ app.use('/api/replies', replyRoutes);
 app.use('/api/videos', videoRoutes);
 app.use('/api/subjects', subjectRoutes);
 
-// Sin app.listen aquí, solo exportamos app
+// Just for deployment
+// sequelize.sync({ force: true })
+//   .then(() => {
+//     console.log("✅ Database successfully synchronized");
+//   })
+//   .catch((error) => {
+//     console.error("❌ Error synchronizing the database:", error);
+//   });
+
+// export default app;
+
+const PORT = 8080;
+
 sequelize.sync({ force: true })
   .then(() => {
-    console.log("✅ Database successfully synchronized");
+    console.log("Database successfully synchronized");
+    app.listen(PORT, () => {
+      console.log(`Server running at http://localhost:${PORT}`);
+    });
   })
   .catch((error) => {
-    console.error("❌ Error synchronizing the database:", error);
+    console.error("Error synchronizing the database:", error);
   });
-
-export default app;
 
