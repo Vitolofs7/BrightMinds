@@ -4,12 +4,20 @@ import { VideoDiscussionsComponent } from "../../components/videoDiscussions/vid
 import { SubTitleComponent } from "../../components/subtitle/subTitle.component";
 import { useState } from "react";
 import backArrowIcon from "../../assets/backArrowIcon.svg";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import tempVideoPlayerPicture from "../../assets/tempVideoPlayerPicture.png"; // Placeholder for video player picture
 import { BackArrowComponent } from "../../components/backarrow/backarrow.component";
+import { useCommentsData } from "../../utils/hooks/useCommentsData";
+import { useVideosData } from "../../utils/hooks/useVideosData";
 
 export const VideoPage = () => {
   const [activeTab, setActiveTab] = useState("about"); // State to track the active tab
+  const {videoId} = useParams()
+
+  const { commentsList } = useCommentsData(videoId); // Fetch comments data
+  const { video } = useVideosData(videoId); // Fetch videos data
+
+  
 
   return (
     <VideoStyled>
@@ -39,8 +47,8 @@ export const VideoPage = () => {
         {/* Conditionally render components based on activeTab */}
         {activeTab === "about" ? (
           <VideoAboutComponent
-            descriptionTitle="Introduction"
-            description="In this tutorial, you'll learn the fundamentals of React, a powerful JavaScript library for building dynamic web applications."
+            descriptionTitle={video?.videoName}
+            description={video?.summary}
           />
         ) : (
           <VideoDiscussionsComponent />

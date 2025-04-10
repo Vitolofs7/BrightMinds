@@ -1,4 +1,5 @@
 import { CardStyled } from "./card.styled";
+import { useVideosData } from "../../utils/hooks/useVideosData";
 
 export const CardComponent = ({
   className,
@@ -83,3 +84,4 @@ export const CardComponent = ({
     </CardStyled>
   );
 };
+
