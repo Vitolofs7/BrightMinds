@@ -7,6 +7,10 @@ import { Link } from "react-router-dom";
 import { useSubjectsData } from "../../utils/hooks/useSubjectsData";
 import { LoaderComponent } from "../../components/loader/loader.component";
 import pythonLogo from "../../assets/pythonLogo.svg";
+import html5Logo from "../../assets/html5Logo.svg";
+import javascriptLogo from "../../assets/javascriptLogo.svg";
+import reactLogo2 from "../../assets/reactLogo2.svg";
+import cssLogo from "../../assets/cssLogo.svg";
 import { useUser } from "../../utils/userProvider/userProvider";
 
 export const HomePage = ({ username }) => {
@@ -22,7 +26,24 @@ export const HomePage = ({ username }) => {
     const randomProgress = () => {
         return Math.floor(Math.random() * 100) + 1;
 
-    }
+    };
+
+    const getIconBySubject = (subjectName) => {
+        switch (subjectName.toLowerCase()) {
+            case 'html':
+                return html5Logo;
+            case 'javascript':
+                return javascriptLogo;
+            case 'python':
+                return pythonLogo;
+            case 'react':
+                return reactLogo2;
+            case 'css':
+                return cssLogo;
+            default:
+                return pythonLogo; // Default icon if no match is found
+        }
+    };
 
     if (loading) {
         return (
@@ -39,12 +60,7 @@ export const HomePage = ({ username }) => {
                     <CardContainerComponent direction="sideways" className="cards">
                         {subjectsList.data.map((subject) => (
                             <Link to={`/Courses/${subject.subjectName}`} key={subject.id}>
-                                <CardComponent icon={pythonLogo} type="courseSmall" courseName={subject.subjectName} courseLength='10 hours' />
-                            </Link>
-                        ))}
-                        {subjectsList.data.map((subject) => (
-                            <Link to={`/Courses/${subject.subjectName}`} key={subject.id}>
-                                <CardComponent icon={pythonLogo} type="courseSmall" courseName={subject.subjectName} courseLength='10 hours' />
+                                <CardComponent icon={getIconBySubject(subject.subjectName)} type="courseSmall" courseName={subject.subjectName} courseLength='10 hours' />
                             </Link>
                         ))}
                     </CardContainerComponent>
@@ -56,19 +72,10 @@ export const HomePage = ({ username }) => {
                     <CardContainerComponent direction="vertical" className="cards">
                         {subjectsList.data.map((subject) => (
                             <Link to={`/Courses/${subject.subjectName}`} key={subject.id}>
-                                <CardComponent courseProgress={randomProgress()} icon={pythonLogo} type="courseLarge" courseName={subject.subjectName} courseLength='10 hours' />
+                                <CardComponent courseProgress={randomProgress()} icon={getIconBySubject(subject.subjectName)} type="courseLarge" courseName={subject.subjectName} courseLength='10 hours' />
                             </Link>
                         ))}
-                        {subjectsList.data.map((subject) => (
-                            <Link to={`/Courses/${subject.subjectName}`} key={subject.id}>
-                                <CardComponent courseProgress={randomProgress()} icon={pythonLogo} type="courseLarge" courseName={subject.subjectName} courseLength='10 hours' />
-                            </Link>
-                        ))}
-                        {subjectsList.data.map((subject) => (
-                            <Link to="/Courses" key={subject.id}>
-                                <CardComponent courseProgress={randomProgress()} icon={pythonLogo} type="courseLarge" courseName={subject.subjectName} courseLength='10 hours' />
-                            </Link>
-                        ))}
+                        
                     </CardContainerComponent>
                 ) : (
                     <p>No subjects available</p>

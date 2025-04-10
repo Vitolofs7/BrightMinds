@@ -8,7 +8,7 @@ import commentRoutes from './routes/comment.routes.js';
 import replyRoutes from './routes/reply.routes.js';
 import authRoutes from './routes/auth.routes.js';
 import { sequelize } from './models/index.js';
-import videoRoutes from './routes/video.routes.js'
+import videoRoutes from './routes/video.routes.js';
 import subjectRoutes from './routes/subject.routes.js';
 
 dotenv.config();
@@ -39,15 +39,14 @@ app.use('/api/replies', replyRoutes);
 app.use('/api/videos', videoRoutes);
 app.use('/api/subjects', subjectRoutes);
 
-const PORT = process.env.PORT || 8080;
-
+// Sin app.listen aquí, solo exportamos app
 sequelize.sync({ force: true })
   .then(() => {
-    console.log("Database successfully synchronized");
-    app.listen(PORT, () => {
-      console.log(`Server running at http://localhost:${PORT}`);
-    });
+    console.log("✅ Database successfully synchronized");
   })
   .catch((error) => {
-    console.error("Error synchronizing the database:", error);
+    console.error("❌ Error synchronizing the database:", error);
   });
+
+export default app;
+
