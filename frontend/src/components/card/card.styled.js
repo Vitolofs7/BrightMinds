@@ -39,10 +39,8 @@ export const CardStyled = styled.div`
       width: 60%;
     }
     img {
-      /* width: 33px;
-      height: 33px;
-      position: absolute;
-      left: 1rem; */
+      width: 50px;
+      height: 50px;
     }
     h3 {
       font-size: 1.4rem;
