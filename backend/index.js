@@ -39,18 +39,14 @@ app.use('/api/replies', replyRoutes);
 app.use('/api/videos', videoRoutes);
 app.use('/api/subjects', subjectRoutes);
 
-const PORT = process.env.PORT || 8080;
-
+// Sin app.listen aquí, solo exportamos app
 sequelize.sync({ force: true })
   .then(() => {
-    console.log("Database successfully synchronized");
-    app.listen(PORT, () => {
-      console.log(`Server running at http://localhost:${PORT}`);
-    });
+    console.log("✅ Database successfully synchronized");
   })
   .catch((error) => {
-    console.error("Error synchronizing the database:", error);
+    console.error("❌ Error synchronizing the database:", error);
   });
 
-// 👇 Esta línea es la clave para solucionar el error
 export default app;
+

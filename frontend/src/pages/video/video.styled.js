@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const VideoStyled = styled.div`
 padding: 5%;
-padding-top: 10%;
+padding-top: 20%;
 
 img {
     width: 100%;
