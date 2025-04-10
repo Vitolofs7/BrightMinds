@@ -33,9 +33,7 @@ export default function FormComponent({ isSignUp = true, onLoginSuccess }) {
                 // Verificar que la respuesta contiene un token
                 if (response.token) {
                     localStorage.setItem("token", response.token); // Guarda el token en el localStorage
-
-
-
+                    localStorage.setItem("userName", response.name); // Saves the user's name in localStorage
                     // Actualizar el estado de autenticación en el componente superior
                     if (onLoginSuccess) {
                         onLoginSuccess(); // Llama al callback para actualizar el estado en el componente superior
