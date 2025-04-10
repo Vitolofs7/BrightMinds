@@ -5,7 +5,7 @@ import { Badges } from "../../components/badges/badges.component";  // Asegúrat
 import { LogOutButton } from "../../components/LogOutButton/logOutButton.component";
 
 export const ProfilePage = ({ username, onLogout }) => {
-  username = 'user';
+  username = localStorage.getItem("userName") || username;
   const badges = ["Badge 1", "Badge 2", "Badge 3", "Badge 4", "Badge 5", "Badge 6"];
 
   return (

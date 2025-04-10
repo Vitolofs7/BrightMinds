@@ -44,6 +44,7 @@ export default function FormComponent({ isSignUp = true, onLoginSuccess }) {
                     navigate("/homepage"); // Redirige aquí directamente
                 } else {
                     throw new Error("No token received");
+                    
                 }
             }
         } catch (error) {
@@ -51,6 +52,8 @@ export default function FormComponent({ isSignUp = true, onLoginSuccess }) {
                 ? "Registration failed. Please try again."
                 : "Login failed. Please check your credentials.");
             console.error("Auth error:", message);
+            alert(message); // Muestra un mensaje de error al usuario
+            
         }
     };
 
