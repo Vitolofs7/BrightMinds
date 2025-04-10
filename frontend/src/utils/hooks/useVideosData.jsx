@@ -7,12 +7,13 @@ export const useVideosData = (videoId) => {
     const getData = async (videoId) => {
         try {
             const token = localStorage.getItem('token'); // Retrieve the token from local storage
-            const response = await fetch('http://localhost:8080/api/videos', {
-                headers: {
-                    'Authorization': `Bearer ${token}`, // Add the token to the Authorization header
-                    'Content-Type': 'application/json',
-                },
-            });
+            // const response = await fetch('http://localhost:8080/api/videos', {
+            //     headers: {
+            //         'Authorization': `Bearer ${token}`, // Add the token to the Authorization header
+            //         'Content-Type': 'application/json',
+            //     },
+            // });
+            const response = await fetch('/data/videosData.json', );
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }

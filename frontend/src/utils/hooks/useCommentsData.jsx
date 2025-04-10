@@ -8,16 +8,21 @@ export const useCommentsData = (videoId) => {
         try {
             setLoading(true); // Set loading to true before fetching data
             const token = localStorage.getItem('token'); // Retrieve the token from local storage
-            const response = await fetch('http://localhost:8080/api/comments', {
-                headers: {
-                    'Authorization': `Bearer ${token}`, // Add the token to the Authorization header
-                    'Content-Type': 'application/json',
-                },
-            });
+            // const response = await fetch('http://localhost:8080/api/comments', {
+            //     headers: {
+            //         'Authorization': `Bearer ${token}`, // Add the token to the Authorization header
+            //         'Content-Type': 'application/json',
+            //     },
+            // });
+            const response = await fetch('/data/commentData.json');
+            console.log('response',response);
+            
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
+            console.log(data);
+            
 
             if (videoId) {
                 const commentArray = []

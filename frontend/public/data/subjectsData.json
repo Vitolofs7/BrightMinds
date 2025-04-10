@@ -1,0 +1,39 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "subjectName": "HTML",
+            "description": "The standard markup language for creating web pages",
+            "createdAt": "2025-04-10T19:03:40.042Z",
+            "updatedAt": "2025-04-10T19:03:40.042Z"
+        },
+        {
+            "id": 2,
+            "subjectName": "JavaScript",
+            "description": "A programming language used to create dynamic and interactive web applications",
+            "createdAt": "2025-04-10T19:03:40.042Z",
+            "updatedAt": "2025-04-10T19:03:40.042Z"
+        },
+        {
+            "id": 3,
+            "subjectName": "React",
+            "description": "A JavaScript library for building interactive user interfaces using components",
+            "createdAt": "2025-04-10T19:03:40.042Z",
+            "updatedAt": "2025-04-10T19:03:40.042Z"
+        },
+        {
+            "id": 4,
+            "subjectName": "Python",
+            "description": "A versatile, high-level programming language known for its readability and wide range of applications",
+            "createdAt": "2025-04-10T19:03:40.042Z",
+            "updatedAt": "2025-04-10T19:03:40.042Z"
+        },
+        {
+            "id": 5,
+            "subjectName": "CSS",
+            "description": "A stylesheet language used to control the presentation and layout of HTML elements on web pages",
+            "createdAt": "2025-04-10T19:03:40.042Z",
+            "updatedAt": "2025-04-10T19:03:40.042Z"
+        }
+    ]
+}

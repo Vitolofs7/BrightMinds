@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "userId": 1,
+            "videoId": 1,
+            "content": "Great video! I loved the explanation.",
+            "like": 10,
+            "dislike": 1,
+            "createdAt": "2025-04-10T19:03:40.061Z",
+            "updatedAt": "2025-04-10T19:03:40.061Z"
+        },
+        {
+            "id": 2,
+            "userId": 2,
+            "videoId": 2,
+            "content": "Interesting content, but it could be improved.",
+            "like": 3,
+            "dislike": 2,
+            "createdAt": "2025-04-10T19:03:40.061Z",
+            "updatedAt": "2025-04-10T19:03:40.061Z"
+        }
+    ]
+}
