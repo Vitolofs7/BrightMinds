@@ -2,8 +2,11 @@ import { useForm } from "react-hook-form";
 import { FormStyled } from "./form.styled";
 import { registerUser, loginUser } from "../../services/auth.service";
 import { useNavigate } from "react-router-dom";
+import { getUsername } from "../../App";
+import { useUser } from "../../utils/userProvider/userProvider";
 
 export default function FormComponent({ isSignUp = true, onLoginSuccess }) {
+    const { setUser } = useUser();
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
     const password = watch("password");
     const navigate = useNavigate();
@@ -30,12 +33,15 @@ export default function FormComponent({ isSignUp = true, onLoginSuccess }) {
                 // Verificar que la respuesta contiene un token
                 if (response.token) {
                     localStorage.setItem("token", response.token); // Guarda el token en el localStorage
-                    
+
+
+
                     // Actualizar el estado de autenticación en el componente superior
                     if (onLoginSuccess) {
                         onLoginSuccess(); // Llama al callback para actualizar el estado en el componente superior
+
                     }
-                    
+
                     // Redirige a la página principal después de un login exitoso
                     navigate("/homepage"); // Redirige aquí directamente
                 } else {

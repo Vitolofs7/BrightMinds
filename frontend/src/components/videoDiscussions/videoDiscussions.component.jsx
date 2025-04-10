@@ -9,7 +9,6 @@ export const VideoDiscussionsComponent = () => {
     const videoId = useParams().videoId;
     const { commentsList, loading } = useCommentsData(videoId);
 
-    console.log(commentsList);
 
     return (
         <VideoDiscussionsStyled>

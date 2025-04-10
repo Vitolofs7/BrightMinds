@@ -30,7 +30,7 @@ export const CardStyled = styled.div`
     align-items: center;
     border: 1px solid #d0e0ff;
     border-radius: 15px;
-    width: 80vw;
+    width: 100%;
     height: 80px;
     padding: 0.5rem;
 

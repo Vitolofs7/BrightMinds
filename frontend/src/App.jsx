@@ -12,16 +12,22 @@ import { VideoPage } from './pages/video/video.page';
 import './App.scss';
 import { ProfilePage } from './pages/profile/profile.page';
 import { OutletComponent } from './components/outlet/outlet.component';
+import { UserProvider } from './utils/userProvider/userProvider';
+
+export let username
+
+export const getUsername = sendUsername => {
+  username = sendUsername
+}
 
 function App() {
   const location = useLocation();
+
 
   const isAuthenticated = !!localStorage.getItem("token");
 
   const hideNavigationRoutes = ['/', '/signup', '/login'];
   const showNavigation = !hideNavigationRoutes.includes(location.pathname);
-  console.log("Location:", location.pathname);
-  console.log("Show Navigation:", showNavigation);
 
   const handleLoginSuccess = () => {
     window.location.href = "/homepage";
@@ -35,51 +41,54 @@ function App() {
 
   return (
     <>
-      {showNavigation && <NavigationComponent />}
+      <UserProvider>
+        {showNavigation && <NavigationComponent />}
 
-      <main>
-        <Routes>
-          <Route path='/' element={<OutletComponent />}>
-            <Route path="/" element={<WelcomePage />} />
-            <Route path="/signUp" element={isAuthenticated ? <Navigate to="/homepage" replace /> : <SignUpPage />} />
-            <Route path="/login" element={isAuthenticated ? <Navigate to="/homepage" replace /> : <LoginPage onLoginSuccess={handleLoginSuccess} />} />
-          </Route>
-          {/* Ruta protegida para homepage */}
+        <main>
+          <Routes>
+            <Route path='/' element={<OutletComponent />}>
+              <Route path="/" element={<WelcomePage />} />
+              <Route path="/signUp" element={isAuthenticated ? <Navigate to="/homepage" replace /> : <SignUpPage />} />
+              <Route path="/login" element={isAuthenticated ? <Navigate to="/homepage" replace /> : <LoginPage onLoginSuccess={handleLoginSuccess} />} />
+            </Route>
+            {/* Ruta protegida para homepage */}
 
-          <Route
-            path="/homepage"
-            element={isAuthenticated ? <HomePage /> : <Navigate to="/login" replace />}
-          />
+            <Route
+              path="/homepage"
+              element={isAuthenticated ? <HomePage /> : <Navigate to="/login" replace />}
+            />
 
-          {/* Ruta protegida para explorar */}
-          <Route
-            path="/explore"
-            element={isAuthenticated ? <ExplorePage /> : <Navigate to="/login" replace />}
-          />
+            {/* Ruta protegida para explorar */}
+            <Route
+              path="/explore"
+              element={isAuthenticated ? <ExplorePage /> : <Navigate to="/login" replace />}
+            />
 
-          <Route
-            path='/Courses/:courseSlug'
-            element={isAuthenticated ? <CourseHomepagePage /> : <Navigate to="/login" replace />}
-          />
+            <Route
+              path='/Courses/:courseSlug'
+              element={isAuthenticated ? <CourseHomepagePage /> : <Navigate to="/login" replace />}
+            />
 
-          <Route
-            path='/Courses/:courseSlug/:videoId'
-            element={isAuthenticated ? <VideoPage /> : <Navigate to="/login" replace />}
-          />
+            <Route
+              path='/Courses/:courseSlug/:videoId'
+              element={isAuthenticated ? <VideoPage /> : <Navigate to="/login" replace />}
+            />
 
-          {/* Ruta protegida para settings */}
-          <Route
-            path="/settings"
-            element={isAuthenticated ? <SettingsPage /> : <Navigate to="/login" replace />}
-          />
+            {/* Ruta protegida para settings */}
+            <Route
+              path="/settings"
+              element={isAuthenticated ? <SettingsPage /> : <Navigate to="/login" replace />}
+            />
 
-          {/* Ruta protegida para el perfil */}
-          <Route
-            path="/profile"
-            element={isAuthenticated ? <ProfilePage onLogout={handleLogout} /> : <Navigate to="/login" replace />}
-          />
-        </Routes>
-      </main >
+            {/* Ruta protegida para el perfil */}
+            <Route
+              path="/profile"
+              element={isAuthenticated ? <ProfilePage onLogout={handleLogout} /> : <Navigate to="/login" replace />}
+            />
+          </Routes>
+        </main >
+
+      </UserProvider>
 
     </>
   );

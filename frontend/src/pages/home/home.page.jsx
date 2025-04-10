@@ -7,13 +7,17 @@ import { Link } from "react-router-dom";
 import { useSubjectsData } from "../../utils/hooks/useSubjectsData";
 import { LoaderComponent } from "../../components/loader/loader.component";
 import pythonLogo from "../../assets/pythonLogo.svg";
+import { useUser } from "../../utils/userProvider/userProvider";
 
 export const HomePage = ({ username }) => {
+
+    const { user } = useUser(); // Get the user data from the context
+    // console.log(user);
+    
 
     username = 'user'
 
     const { subjectsList, loading } = useSubjectsData();
-    console.log(subjectsList)
 
     const randomProgress = () => {
         return Math.floor(Math.random() * 100) + 1;

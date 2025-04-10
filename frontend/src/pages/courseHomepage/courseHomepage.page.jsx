@@ -27,7 +27,6 @@ export const CourseHomepagePage = () => {
     }
 
     const { videosList } = useVideosData();
-    console.log(videosList)
 
     if (loading) {
         return (
