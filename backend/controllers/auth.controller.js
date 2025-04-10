@@ -66,7 +66,7 @@ export const login = async (req, res) => {
         );
 
         console.log(`✅ User authenticated: ${user.id}`);
-        res.json({ message: "Login successful", token });
+        res.json({ message: "Login successful", token, name: user.name });
     } catch (error) {
         console.error("❌ Error logging in:", error.message);
         res.status(500).json({ error: error.message });
